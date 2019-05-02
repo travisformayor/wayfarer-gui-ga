@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import UserModel from '../models/user';
+import UserModel from '../../models/user';
 
 class Signup extends Component {
   state = {

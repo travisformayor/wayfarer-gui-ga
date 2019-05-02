@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 class Home extends Component {
   render() {
     return (
-      <h2>
+      <h1>
         Wayfarer Landing Page
-      </h2>
+      </h1>
     );
   }
 }

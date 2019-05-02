@@ -10,7 +10,6 @@ class Header extends Component {
           <Link to={'/signin'}>Sign In</Link>
           <Link to={'/signup'}>Sign Up</Link>
         </nav>
-        <h1>Wayfarer</h1>
       </header>
     )
   }

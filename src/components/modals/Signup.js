@@ -42,21 +42,21 @@ class Signup extends Component {
           <form onSubmit={ this.onSignupSubmit } id="signupForm">
             <div class="form-group">
               <label for="email">Email</label>
-              <input  
+              <input
                   onChange={ this.onInputChange }
                   type="text" id="email" name="email"
                   value={this.state.email} />
             </div>
             <div class="form-group">
               <label for="password">Password</label>
-              <input  
+              <input
                   onChange={ this.onInputChange }
                   type="password" id="password" name="password"
                   value={this.state.password} />
             </div>
             <div class="form-group">
               <label for="password2">Confirm Password</label>
-              <input  
+              <input
                   onChange={ this.onInputChange }
                   type="password" id="password2" name="password2"
                   value={this.state.password2} />
@@ -68,4 +68,4 @@ class Signup extends Component {
   };
 };
 
-export default Signup; 
+export default Signup;

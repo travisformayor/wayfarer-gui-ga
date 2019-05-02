@@ -13,15 +13,13 @@ class UserModel {
   }
 
   static login(user) {
-    
     const api_url = `${userEndpoint}/${user.email}`;
     let request = axios.get(api_url, user, {'credentials': 'include'});
     return request;
   }
 
-  static signup(user) {
-    // Todo: Add frontend validation code before this get called
-  }
+  // static signup(user) {
+  // }
 
   // static create(user) {
   //   let request = axios.post(endPoint, user);

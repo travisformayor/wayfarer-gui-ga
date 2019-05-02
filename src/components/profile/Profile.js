@@ -17,12 +17,12 @@ class Profile extends Component {
                 <p>Current City</p>
                 <p>Join Date:</p>
               </div>
-              <div class="card-action">
+              <div className="card-action">
                 <a href="#">Edit Profile</a>
               </div>
-              <ul class="collection with-header">
-                {/* <li class="collection-header"><h4>Posts</h4></li>
-                <li class="collection-item">Post</li> */}
+              <ul className="collection with-header">
+                {/* <li className="collection-header"><h4>Posts</h4></li>
+                <li className="collection-item">Post</li> */}
                 <Posts />
               </ul>
             </div>

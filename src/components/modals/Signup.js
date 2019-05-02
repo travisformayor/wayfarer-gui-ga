@@ -37,24 +37,24 @@ class Signup extends Component {
 
   render() {
     return(
-      <section class="signup">
+      <section className="signup">
           <h1>Signup</h1>
           <form onSubmit={ this.onSignupSubmit } id="signupForm">
-            <div class="form-group">
+            <div className="form-group">
               <label for="email">Email</label>
               <input
                   onChange={ this.onInputChange }
                   type="text" id="email" name="email"
                   value={this.state.email} />
             </div>
-            <div class="form-group">
+            <div className="form-group">
               <label for="password">Password</label>
               <input
                   onChange={ this.onInputChange }
                   type="password" id="password" name="password"
                   value={this.state.password} />
             </div>
-            <div class="form-group">
+            <div className="form-group">
               <label for="password2">Confirm Password</label>
               <input
                   onChange={ this.onInputChange }

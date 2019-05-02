@@ -5,8 +5,8 @@ class Posts extends Component {
     return (
       <div>
         <ul className="collection with-header">
-          <li class="collection-header"><h4>Posts</h4></li>
-          <li class="collection-item"><a href="#!" class="collection-item">Post</a></li>
+          <li className="collection-header"><h4>Posts</h4></li>
+          <li className="collection-item"><a href="#!" className="collection-item">Post</a></li>
         </ul>
       </div>
     )

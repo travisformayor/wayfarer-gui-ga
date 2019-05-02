@@ -10,6 +10,22 @@ class CreatePost extends Component {
     }
   }
 
+  onInputChange = (event) => {
+    this.setState({
+      title: event.target.value,
+      content: event.target.value,
+    });
+  }
+
+  // onFormSubmit = (event) => {
+  //   event.preventDefault()
+  //   let post = this.state.post
+  //   this.props.createPost(post)
+  //   this.setState({
+
+  //   })
+  // }
+
   render() {
     return (
       <React.Fragment>

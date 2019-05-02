@@ -15,7 +15,7 @@ class Profile extends Component {
                 <p>Username</p>
                 <p>Email</p>
                 <p>Current City</p>
-                <p>Signed up on:</p>
+                <p>Join Date:</p>
               </div>
               <div class="card-action">
                 <a href="#">Edit Profile</a>

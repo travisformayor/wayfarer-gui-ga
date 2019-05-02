@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Posts from '../posts/Posts';
 
 class Profile extends Component {
   render() {
@@ -13,16 +14,16 @@ class Profile extends Component {
                 <p>Name</p>
                 <p>Username</p>
                 <p>Email</p>
-                <p>Favorite City</p>
-                <p>Email</p>
-                <p>Email</p>
+                <p>Current City</p>
+                <p>Signed up on:</p>
+              </div>
+              <div class="card-action">
+                <a href="#">Edit Profile</a>
               </div>
               <ul class="collection with-header">
-                <li class="collection-header"><h4>Posts</h4></li>
-                <li class="collection-item">Post</li>
-                <li class="collection-item">Post</li>
-                <li class="collection-item">Post</li>
-                <li class="collection-item">Post</li>
+                {/* <li class="collection-header"><h4>Posts</h4></li>
+                <li class="collection-item">Post</li> */}
+                <Posts />
               </ul>
             </div>
           </div>

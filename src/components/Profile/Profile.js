@@ -9,12 +9,25 @@ class Profile extends Component {
     currentName: '',
     currentCity: '',
     signupDateDate: '',
+    editMode: false,
+  }
+
+  onInputChange = (event) => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value,
+    });
   }
 
   componentDidMount() {
     this.getUser();
   }
   
+  onEditProfile = () => {
+    console.log('Button Clicked');
+    this.setState ({ editMode: true});
+
+  }
   getUser = () => {
     UserModel.get()
       .then(res => {
@@ -44,14 +57,25 @@ class Profile extends Component {
             <div className="card blue-grey darken-1">
               <div className="card-content white-text">
                 <span className="card-title">User Name</span>
+                
+                {this.state.editMode ? (
+                  <input 
+                    onChange={ this.onInputChange }
+                    type="text" id="currentName" name="currentName"
+                    value={this.state.currentName} />
+                ) : (
                 <p>Name: {this.state.currentName}</p>
+                )}
+
                 <p>Username: {this.state.currentUsername}</p>
                 <p>Email: {this.state.currentEmail}</p>
                 <p>Current City: {this.state.currentCity}</p>
                 <p>Sign Up Date {this.state.signupDate}</p>
               </div>
               <div className="card-action">
-                <a href="#">Edit Profile</a>
+                <button onClick={ this.onEditProfile } id='editProfile'>
+                  Edit Profile
+                </button>
               </div>
               <ul className="collection with-header">
                 {/* <li className="collection-header"><h4>Posts</h4></li>

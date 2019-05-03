@@ -6,9 +6,11 @@ import UserModel from '../../models/user';
 class Signup extends Component {
   state = {
     email: '',
+    username: '',
     password: '',
     password2: '',
     errors: [],
+    formEnabled: true,
   }
 
   onInputChange = (event) => {
@@ -20,14 +22,22 @@ class Signup extends Component {
 
   onSignupSubmit = (event) => {
     event.preventDefault();
-    this.signupUser(this.state);
+    const newUser = {
+      email: this.state.email,
+      username: this.state.username,
+      password: this.state.password,
+      password2: this.state.password2,
+    }
+    this.signupUser(newUser);
   }
 
   signupUser = (creds) => {
-    // Todo: validation
-    // Todo: hash password here in frontend before sending
+    // Disable form while submit is happening...
+    this.setState({formEnabled: false});
     UserModel.signup(creds)
       .then(res => {
+        // Response back. Re-enable form
+        this.setState({formEnabled: true});
         console.log("Signup response: ", res);
         // res.data has success set to true if it worked
         if (res.data.success) {
@@ -52,6 +62,12 @@ class Signup extends Component {
 
   render() {
     let { errors } = this.state;
+
+    let submit_button = this.state.formEnabled ? (
+      <input type="submit" value="Signup" /> 
+      ) : (
+      <input type="submit" value="Signup" disabled /> );
+     
     return(
       <section className="signup">
           <h1>Signup</h1>
@@ -70,6 +86,13 @@ class Signup extends Component {
                   value={this.state.email} />
             </div>
             <div className="form-group">
+              <label htmlFor="username">Username</label>
+              <input
+                  onChange={ this.onInputChange }
+                  type="text" id="username" name="username"
+                  value={this.state.username} />
+            </div>
+            <div className="form-group">
               <label htmlFor="password">Password</label>
               <input
                   onChange={ this.onInputChange }
@@ -83,7 +106,7 @@ class Signup extends Component {
                   type="password" id="password2" name="password2"
                   value={this.state.password2} />
             </div>
-            <input type="submit" value="Signup" />
+            {submit_button}
           </form>
       </section>
     );

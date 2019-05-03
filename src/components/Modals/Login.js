@@ -8,6 +8,7 @@ class Login extends Component {
     username: "",
     password: "",
     errors: [],
+    formEnabled: true,
   };
 
   onInputChange = event => {
@@ -19,12 +20,20 @@ class Login extends Component {
 
   onLoginSubmit = event => {
     event.preventDefault();
-    this.loginUser(this.state);
+    const userObj = {
+      username: this.state.username,
+      password: this.state.password,
+    }
+    this.loginUser(userObj);
   };
 
   loginUser = creds => {
+    // Disable form while submit is happening...
+    this.setState({formEnabled: false});
     UserModel.login(creds)
       .then(res => {
+        // Response back. Re-enable form
+        this.setState({formEnabled: true});
         console.log("Login response: ", res);
         // res.data has login set to true if it worked
         if (res.data.login) {
@@ -45,6 +54,12 @@ class Login extends Component {
 
   render() {
     let { errors } = this.state;
+
+    let submit_button = this.state.formEnabled ? (
+      <input type="submit" value="Signup" /> 
+      ) : (
+      <input type="submit" value="Signup" disabled /> );
+
     return (
       <section className="login">
         <h1>Login</h1>
@@ -75,7 +90,7 @@ class Login extends Component {
               value={this.state.password}
             />
           </div>
-          <input type="submit" value="Login" />
+          {submit_button}
         </form>
       </section>
     );

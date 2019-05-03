@@ -1,7 +1,36 @@
 import React, { Component } from 'react';
 import Posts from '../Posts/Posts';
+import UserModel from "../../models/user";
 
 class Profile extends Component {
+  state = {
+    currentUsername: '',
+    currentEmail: '',
+    currentName: '',
+  }
+
+  componentDidMount() {
+    this.getUser();
+  }
+  
+  getUser = () => {
+    UserModel.get()
+      .then(res => {
+        console.log("Get user info response: ", res);
+        if (res.data.foundUser.username) {
+          this.setState({
+            currentUsername: res.data.foundUser.username,
+            currentEmail: res.data.foundUser.email,
+            currentName: res.data.foundUser.name,
+          })
+        }  
+      })
+      .catch(error => {
+        // this.setState({ error });
+        console.log("Error: ", error);
+      });
+  };
+
   render() {
     return (
       <div>
@@ -11,9 +40,9 @@ class Profile extends Component {
             <div className="card blue-grey darken-1">
               <div className="card-content white-text">
                 <span className="card-title">User Name</span>
-                <p>Name</p>
-                <p>Username</p>
-                <p>Email</p>
+                <p>Name: {this.state.currentName}</p>
+                <p>Username: {this.state.currentUsername}</p>
+                <p>Email: {this.state.currentEmail}</p>
                 <p>Current City</p>
                 <p>Join Date:</p>
               </div>

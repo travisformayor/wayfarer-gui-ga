@@ -1,11 +1,14 @@
 import React, { Component } from "react";
+import { withRouter } from 'react-router-dom';
+import Error from './Error';
 import UserModel from "../../models/user";
 
 class Login extends Component {
   state = {
-    email: "",
+    username: "",
     password: "",
-    error: null
+    errors: [],
+    formEnabled: true,
   };
 
   onInputChange = event => {
@@ -17,14 +20,31 @@ class Login extends Component {
 
   onLoginSubmit = event => {
     event.preventDefault();
-    this.loginUser(this.state);
+    const userObj = {
+      username: this.state.username,
+      password: this.state.password,
+    }
+    this.loginUser(userObj);
   };
 
   loginUser = creds => {
+    // Disable form while submit is happening...
+    this.setState({formEnabled: false});
     UserModel.login(creds)
       .then(res => {
+        // Response back. Re-enable form
+        this.setState({formEnabled: true});
         console.log("Login response: ", res);
-        // Todo: Save cookie to localstore
+        // res.data has login set to true if it worked
+        if (res.data.login) {
+          // if success (login key exists and is true), redirect to profile
+          this.props.history.push('/profile'); // withRouter being used here
+        } else if (res.data.errors) {
+          // if fail (errors returned), get the errors
+          this.setState({
+            errors: res.data.errors,
+          })
+        }
       })
       .catch(error => {
         this.setState({ error });
@@ -33,22 +53,35 @@ class Login extends Component {
   };
 
   render() {
+    let { errors } = this.state;
+
+    let submit_button = this.state.formEnabled ? (
+      <input type="submit" value="Signup" /> 
+      ) : (
+      <input type="submit" value="Signup" disabled /> );
+
     return (
       <section className="login">
         <h1>Login</h1>
+        {errors.map((error, index) => (
+          <Error
+            message={error.message}
+            key={index}
+          />
+        ))}
         <form onSubmit={this.onLoginSubmit} id="loginForm">
           <div className="form-group">
-            <label for="email">Email</label>
+            <label htmlFor="username">Username</label>
             <input
               onChange={this.onInputChange}
               type="text"
-              id="email"
-              name="email"
-              value={this.state.email}
+              id="username"
+              name="username"
+              value={this.state.username}
             />
           </div>
           <div className="form-group">
-            <label for="password">Password</label>
+            <label htmlFor="password">Password</label>
             <input
               onChange={this.onInputChange}
               type="password"
@@ -57,11 +90,11 @@ class Login extends Component {
               value={this.state.password}
             />
           </div>
-          <input type="submit" value="Login" />
+          {submit_button}
         </form>
       </section>
     );
   }
 }
 
-export default Login;
+export default withRouter(Login);

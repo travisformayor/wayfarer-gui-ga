@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+import Error from './Error';
 import UserModel from '../../models/user';
 
 class Signup extends Component {
@@ -6,7 +8,7 @@ class Signup extends Component {
     email: '',
     password: '',
     password2: '',
-    error: null,
+    errors: [],
   }
 
   onInputChange = (event) => {
@@ -26,6 +28,19 @@ class Signup extends Component {
     // Todo: hash password here in frontend before sending
     UserModel.signup(creds)
       .then(res => {
+        console.log("Signup response: ", res);
+        // res.data has success set to true if it worked
+        if (res.data.success) {
+          // if success is true, redirect to profile
+          this.props.history.push('/profile'); // withRouter being used here
+        } else if (res.data.errors) {
+          // if fail (errors returned), get the errors
+          this.setState({
+            errors: res.data.errors,
+          })
+        }
+      })
+      .then(res => {
         console.log('Signup response: ', res);
         // Todo: log user in
       })
@@ -36,9 +51,16 @@ class Signup extends Component {
   }
 
   render() {
+    let { errors } = this.state;
     return(
       <section className="signup">
           <h1>Signup</h1>
+          {errors.map((error, index) => (
+          <Error
+            message={error.message}
+            key={index}
+          />
+        ))}
           <form onSubmit={ this.onSignupSubmit } id="signupForm">
             <div className="form-group">
               <label htmlFor="email">Email</label>
@@ -68,4 +90,4 @@ class Signup extends Component {
   };
 };
 
-export default Signup;
+export default withRouter(Signup);

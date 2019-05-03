@@ -26,7 +26,7 @@ class Login extends Component {
     UserModel.login(creds)
       .then(res => {
         console.log("Login response: ", res);
-        // res.data has login status set to true or false
+        // res.data has login set to true if it worked
         if (res.data.login) {
           // if success (login key exists and is true), redirect to profile
           this.props.history.push('/profile'); // withRouter being used here

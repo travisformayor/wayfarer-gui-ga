@@ -3,8 +3,8 @@ import './Modals.css'
 
 const Error = (props) => { // functional component
   return (
-    <div class="alert error">
-      <div class="container">
+    <div className="alert error">
+      <div className="container">
         <p>{props.message}</p>
       </div>
     </div>

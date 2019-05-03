@@ -50,10 +50,6 @@ class Signup extends Component {
           })
         }
       })
-      .then(res => {
-        console.log('Signup response: ', res);
-        // Todo: log user in
-      })
       .catch(error => {
         this.setState({error});
         console.log('Error: ', error);

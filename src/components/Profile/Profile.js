@@ -65,29 +65,33 @@ class Profile extends Component {
           <div className="col s12 m7">
             <div className="card blue-grey darken-1">
               <div className="card-content white-text">
-                <span className="card-title">User Name</span>
+                <span className="card-title">User Profile</span>
                 
                 {this.state.editMode ? (
                   <>
+                    <label htmlFor="currentName">Full Name</label>
                     <input 
                       onChange={ this.onInputChange }
                       type="text" id="currentName" name="currentName"
                       value={this.state.currentName} 
                     />
+                    <label htmlFor="currentUserName">User Name</label>
                     <input 
                       onChange={ this.onInputChange }
-                      type="text" id="currentUserName" name="currentUserName"
-                      value={this.state.currentName} 
+                      type="text" id="currentUsername" name="currentUsername"
+                      value={this.state.currentUsername} 
                     />
+                    <label htmlFor="currentEmail">Email</label>
                     <input 
                       onChange={ this.onInputChange }
                       type="text" id="currentEmail" name="currentEmail"
-                      value={this.state.currentName} 
+                      value={this.state.currentEmail} 
                     />
+                    <label htmlFor="currentCity">Current City</label>
                     <input 
                       onChange={ this.onInputChange }
                       type="text" id="currentCity" name="currentCity"
-                      value={this.state.currentName} 
+                      value={this.state.currentCity} 
                     />
                     <p>Sign Up Date {this.state.signupDate}</p>
                   </>

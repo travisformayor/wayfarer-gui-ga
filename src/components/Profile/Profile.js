@@ -26,8 +26,17 @@ class Profile extends Component {
   onEditProfile = () => {
     console.log('Button Clicked');
     this.setState ({ editMode: true});
-
   }
+  
+  onUpdateProfile = (event) => {
+    event.preventDefault();
+    const updateUser = {
+      name: this.state.name,
+      currentCity: this.state.currentCity,
+    }
+    
+  }
+
   getUser = () => {
     UserModel.get()
       .then(res => {
@@ -59,23 +68,51 @@ class Profile extends Component {
                 <span className="card-title">User Name</span>
                 
                 {this.state.editMode ? (
-                  <input 
-                    onChange={ this.onInputChange }
-                    type="text" id="currentName" name="currentName"
-                    value={this.state.currentName} />
+                  <>
+                    <input 
+                      onChange={ this.onInputChange }
+                      type="text" id="currentName" name="currentName"
+                      value={this.state.currentName} 
+                    />
+                    <input 
+                      onChange={ this.onInputChange }
+                      type="text" id="currentUserName" name="currentUserName"
+                      value={this.state.currentName} 
+                    />
+                    <input 
+                      onChange={ this.onInputChange }
+                      type="text" id="currentEmail" name="currentEmail"
+                      value={this.state.currentName} 
+                    />
+                    <input 
+                      onChange={ this.onInputChange }
+                      type="text" id="currentCity" name="currentCity"
+                      value={this.state.currentName} 
+                    />
+                    <p>Sign Up Date {this.state.signupDate}</p>
+                  </>
                 ) : (
-                <p>Name: {this.state.currentName}</p>
+                  <>
+                    <p>Name: {this.state.currentName}</p>
+                    <p>Username: {this.state.currentUsername}</p>
+                    <p>Email: {this.state.currentEmail}</p>
+                    <p>Current City: {this.state.currentCity}</p>
+                    <p>Sign Up Date {this.state.signupDate}</p>
+                  </>
+                )}
+              </div>
+
+              <div className="card-action">
+                {this.state.editMode ? (
+                  <button onClick={ this.onUpdateProfile } id='editProfile'>
+                    update Profile
+                  </button>
+                ) : (
+                  <button onClick={ this.onEditProfile } id='editProfile'>
+                    Edit Profile
+                  </button>
                 )}
 
-                <p>Username: {this.state.currentUsername}</p>
-                <p>Email: {this.state.currentEmail}</p>
-                <p>Current City: {this.state.currentCity}</p>
-                <p>Sign Up Date {this.state.signupDate}</p>
-              </div>
-              <div className="card-action">
-                <button onClick={ this.onEditProfile } id='editProfile'>
-                  Edit Profile
-                </button>
               </div>
               <ul className="collection with-header">
                 {/* <li className="collection-header"><h4>Posts</h4></li>

@@ -1,6 +1,22 @@
 import React, { Component } from 'react';
+import PostModel from '../../models/userPost';
 
 class Posts extends Component {
+
+  componentDidMount() {
+    this.getPosts();
+  }
+
+  getPosts = () => {
+    PostModel.all()
+      .then(res => {
+        console.log('Posts collected: ', res);
+      })
+      .catch(error => {
+        console.log('Error: ', error);
+      });
+  }
+
   render() {
     return (
       <div>

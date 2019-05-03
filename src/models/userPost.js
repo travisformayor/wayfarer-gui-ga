@@ -5,7 +5,7 @@ const userPostEndpoint = `http://localhost:4000/api/v1/posts`;
 class PostModel {
   // Static method to be called
   static all() {
-    const api_url = `${userPostEndpoint}/all`;
+    const api_url = `${userPostEndpoint}`;
     let request = axios.get(api_url);
     return request;
   }

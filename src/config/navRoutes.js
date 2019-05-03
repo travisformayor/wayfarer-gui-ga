@@ -6,6 +6,7 @@ import Logout from '../components/Modals/Logout';
 import Signup from '../components/Modals/Signup';
 import Profile from '../components/Profile/Profile';
 import CityContainer from '../container/CityContainer';
+import PostList from '../container/PostContainer';
 
 export default (
   <Switch>
@@ -13,6 +14,7 @@ export default (
     <Route path='/login' component={Login} />
     <Route path='/signup' component={Signup} />
     <Route path='/cities' component={CityContainer} />
+    <Route path='/posts' component={PostList} />
     <Route path='/profile' component={Profile} />
     <Route path='/logout' component={Logout} />
   </Switch>

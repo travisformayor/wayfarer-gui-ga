@@ -1,11 +1,13 @@
 import React, { Component } from "react";
+import { withRouter } from 'react-router-dom';
+import Error from './Error';
 import UserModel from "../../models/user";
 
 class Login extends Component {
   state = {
     username: "",
     password: "",
-    error: null
+    errors: [],
   };
 
   onInputChange = event => {
@@ -24,9 +26,16 @@ class Login extends Component {
     UserModel.login(creds)
       .then(res => {
         console.log("Login response: ", res);
-        // res.data has login status
-        // if success, redirect to profile
-        // if fail, append errors
+        // res.data has login status set to true or false
+        if (res.data.login) {
+          // if success (login key exists and is true), redirect to profile
+          this.props.history.push('/profile'); // withRouter being used here
+        } else if (res.data.errors) {
+          // if fail (errors returned), get the errors
+          this.setState({
+            errors: res.data.errors,
+          })
+        }
       })
       .catch(error => {
         this.setState({ error });
@@ -35,9 +44,16 @@ class Login extends Component {
   };
 
   render() {
+    let { errors } = this.state;
     return (
       <section className="login">
         <h1>Login</h1>
+        {errors.map((error, index) => (
+          <Error
+            message={error.message}
+            key={index}
+          />
+        ))}
         <form onSubmit={this.onLoginSubmit} id="loginForm">
           <div className="form-group">
             <label htmlFor="username">Username</label>
@@ -66,4 +82,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default withRouter(Login);

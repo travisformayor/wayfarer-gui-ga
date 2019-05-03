@@ -7,6 +7,8 @@ class Profile extends Component {
     currentUsername: '',
     currentEmail: '',
     currentName: '',
+    currentCity: '',
+    signupDateDate: '',
   }
 
   componentDidMount() {
@@ -22,6 +24,8 @@ class Profile extends Component {
             currentUsername: res.data.foundUser.username,
             currentEmail: res.data.foundUser.email,
             currentName: res.data.foundUser.name,
+            currentCity: res.data.foundUser.currentCity,
+            signupDate: res.data.foundUser.signupDate,
           })
         }  
       })
@@ -43,8 +47,8 @@ class Profile extends Component {
                 <p>Name: {this.state.currentName}</p>
                 <p>Username: {this.state.currentUsername}</p>
                 <p>Email: {this.state.currentEmail}</p>
-                <p>Current City</p>
-                <p>Join Date:</p>
+                <p>Current City: {this.state.currentCity}</p>
+                <p>Sign Up Date {this.state.signupDate}</p>
               </div>
               <div className="card-action">
                 <a href="#">Edit Profile</a>

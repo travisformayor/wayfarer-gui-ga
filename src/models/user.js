@@ -1,4 +1,5 @@
-import axios from 'axios'
+import axios from 'axios';
+// axios.defaults.withCredentials = true;
 
 // const endPoint = `https://super-crud-api.herokuapp.com/api/users`
 const userEndpoint = 'localhost:4000/api/v1/users';

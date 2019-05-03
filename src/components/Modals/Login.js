@@ -3,7 +3,7 @@ import UserModel from "../../models/user";
 
 class Login extends Component {
   state = {
-    email: "",
+    username: "",
     password: "",
     error: null
   };
@@ -24,7 +24,9 @@ class Login extends Component {
     UserModel.login(creds)
       .then(res => {
         console.log("Login response: ", res);
-        // Todo: Save cookie to localstore
+        // res.data has login status
+        // if success, redirect to profile
+        // if fail, append errors
       })
       .catch(error => {
         this.setState({ error });
@@ -38,13 +40,13 @@ class Login extends Component {
         <h1>Login</h1>
         <form onSubmit={this.onLoginSubmit} id="loginForm">
           <div className="form-group">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="username">Username</label>
             <input
               onChange={this.onInputChange}
               type="text"
-              id="email"
-              name="email"
-              value={this.state.email}
+              id="username"
+              name="username"
+              value={this.state.username}
             />
           </div>
           <div className="form-group">

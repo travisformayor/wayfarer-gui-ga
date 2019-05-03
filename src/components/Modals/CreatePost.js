@@ -34,11 +34,11 @@ class CreatePost extends Component {
             <div className="row">
               <div className="input-field col s12">
                 <input id="title" type="text" />
-                <label for="title">Title</label>
+                <label htmlFor="title">Title</label>
               </div>
               <div className="input-field col s12">
                 <textarea id="textarea1" class="materialize-textarea"></textarea>
-                <label for="textarea1">Textarea</label>
+                <label htmlFor="textarea1">Textarea</label>
               </div>
             </div>
           </form>

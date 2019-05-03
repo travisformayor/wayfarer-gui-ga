@@ -41,21 +41,21 @@ class Signup extends Component {
           <h1>Signup</h1>
           <form onSubmit={ this.onSignupSubmit } id="signupForm">
             <div className="form-group">
-              <label for="email">Email</label>
+              <label htmlFor="email">Email</label>
               <input
                   onChange={ this.onInputChange }
                   type="text" id="email" name="email"
                   value={this.state.email} />
             </div>
             <div className="form-group">
-              <label for="password">Password</label>
+              <label htmlFor="password">Password</label>
               <input
                   onChange={ this.onInputChange }
                   type="password" id="password" name="password"
                   value={this.state.password} />
             </div>
             <div className="form-group">
-              <label for="password2">Confirm Password</label>
+              <label htmlFor="password2">Confirm Password</label>
               <input
                   onChange={ this.onInputChange }
                   type="password" id="password2" name="password2"

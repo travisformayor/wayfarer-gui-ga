@@ -38,7 +38,7 @@ class Login extends Component {
         <h1>Login</h1>
         <form onSubmit={this.onLoginSubmit} id="loginForm">
           <div className="form-group">
-            <label for="email">Email</label>
+            <label htmlFor="email">Email</label>
             <input
               onChange={this.onInputChange}
               type="text"
@@ -48,7 +48,7 @@ class Login extends Component {
             />
           </div>
           <div className="form-group">
-            <label for="password">Password</label>
+            <label htmlFor="password">Password</label>
             <input
               onChange={this.onInputChange}
               type="password"

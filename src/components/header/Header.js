@@ -10,6 +10,7 @@ class Header extends Component {
           <Link to={'/login'}>Login</Link>
           <Link to={'/signup'}>Sign Up</Link>
           <Link to={'/cities'}>Cities</Link>
+          <Link to={'/profile'}>Profile</Link>
         </nav>
       </header>
     )

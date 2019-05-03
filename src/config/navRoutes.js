@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Home from '../components/Home/Home';
 import Login from '../components/Modals/Login';
+import Logout from '../components/Modals/Logout';
 import Signup from '../components/Modals/Signup';
 import Profile from '../components/Profile/Profile';
 import CityContainer from '../container/CityContainer';
@@ -13,5 +14,6 @@ export default (
     <Route path='/signup' component={Signup} />
     <Route path='/cities' component={CityContainer} />
     <Route path='/profile' component={Profile} />
+    <Route path='/logout' component={Logout} />
   </Switch>
 )

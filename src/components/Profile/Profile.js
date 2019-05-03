@@ -12,7 +12,7 @@ class Profile extends Component {
   componentDidMount() {
     this.getUser();
   }
-  
+
   getUser = () => {
     UserModel.get()
       .then(res => {
@@ -23,7 +23,7 @@ class Profile extends Component {
             currentEmail: res.data.foundUser.email,
             currentName: res.data.foundUser.name,
           })
-        }  
+        }
       })
       .catch(error => {
         // this.setState({ error });

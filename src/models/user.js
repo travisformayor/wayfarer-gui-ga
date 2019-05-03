@@ -15,7 +15,6 @@ class UserModel {
 
   static login(user) {
     const api_url = `${userEndpoint}/login`;
-    // let request = axios.get(userEndpoint, user, {'credentials': 'include'});
     let request = axios.post(api_url, user);
     return request;
   }
@@ -26,6 +25,12 @@ class UserModel {
     return request;
   }
 
+  static get() {
+    // Use session data to get logged in users info for profile
+    const api_url = `${userEndpoint}/profile`;
+    let request = axios.get(api_url, {'credentials': 'include'}); // send session cookie
+    return request;
+  }
   // static create(user) {
   //   let request = axios.post(endPoint, user);
   //   return request;

@@ -55,7 +55,9 @@ class Signup extends Component {
         }
       })
       .catch(error => {
-        this.setState({error});
+        // Response back. Re-enable form
+        this.setState({formEnabled: true});
+        this.setState({errors: 'Trouble accessing the DB. Please try again'});
         console.log('Error: ', error);
       });
   }

@@ -1,14 +1,26 @@
 import React, { Component } from 'react';
+import PostModel from '../../models/userPost';
+import Post from '../Post/Post';
 
 class Posts extends Component {
   render() {
+    // console.log(this.props.posts);
+
+    let {posts} = this.props;
+    console.log('Posts output: ', posts);
+
     return (
-      <div>
-        <ul className="collection with-header">
-          <li className="collection-header"><h4>Posts</h4></li>
-          <li className="collection-item"><a href="#!" className="collection-item">Post</a></li>
-        </ul>
-      </div>
+      <>
+        {posts.map(post => (
+          <Post
+            key={post._id}
+            title={post.title}
+            username={post.username}
+            cityName={post.cityName}
+            content={post.content}
+          />
+        ))}
+      </>
     )
   }
 }

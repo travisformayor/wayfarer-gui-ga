@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import Posts from '../Posts/Posts';
 import Error from '../Modals/Error';
 import UserModel from "../../models/user";
+import PostModel from '../../models/userPost';
 
 class Profile extends Component {
   state = {
     currentUsername: '',
     currentEmail: '',
     currentName: '',
+    posts: [],
     currentCity: '',
     signupDateDate: '',
     editMode: false,
@@ -62,7 +64,6 @@ class Profile extends Component {
       });
   }
 
-
   getUser = () => {
     UserModel.getProfile()
       .then(res => {
@@ -75,12 +76,37 @@ class Profile extends Component {
             currentCity: res.data.foundUser.currentCity,
             signupDate: res.data.foundUser.signupDate,
           })
-        }  
+        }
+        this.getUserPosts()
       })
       .catch(error => {
         // this.setState({ error });
         console.log("Error: ", error);
       });
+  };
+
+  getUserPosts = () => {
+    const posts = [
+      {
+        username: 'dave',
+        cityName: 'London',
+        content: 'This is a city',
+        date: Date.now(),
+        title: 'London Bridge',
+        _id: 1,
+      },
+      {
+        username: 'mary',
+        cityName: 'SF',
+        content: 'This is a foggy city',
+        date: Date.now(),
+        title: 'Golden Gate Bridge',
+        _id: 2,
+      }
+    ]
+    this.setState({
+      posts: posts,
+    })
   };
 
   render() {
@@ -147,7 +173,7 @@ class Profile extends Component {
               <ul className="collection with-header">
                 {/* <li className="collection-header"><h4>Posts</h4></li>
                 <li className="collection-item">Post</li> */}
-                <Posts />
+                <Posts posts={this.state.posts}/>
               </ul>
             </div>
           </div>

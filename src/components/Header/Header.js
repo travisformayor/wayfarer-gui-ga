@@ -11,6 +11,8 @@ class Header extends Component {
           <Link to={'/signup'}>Sign Up</Link>
           <Link to={'/cities'}>Cities</Link>
           <Link to={'/profile'}>Profile</Link>
+          <Link to={'/logout'}>Logout</Link>
+          <Link to={'/posts'}>Posts</Link>
         </nav>
       </header>
     )

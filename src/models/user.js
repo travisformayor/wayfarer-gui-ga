@@ -25,6 +25,12 @@ class UserModel {
     return request;
   }
 
+  static logout() {
+    const api_url = `${userEndpoint}/logout`;
+    let request = axios.post(api_url);
+    return request;
+  }
+
   static getProfile() {
     // Use session data to get logged in users info for profile
     const api_url = `${userEndpoint}/profile`;

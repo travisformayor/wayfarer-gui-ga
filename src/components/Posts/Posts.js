@@ -14,6 +14,7 @@ class Posts extends Component {
         {posts.map(post => (
           <Post
             key={post._id}
+            id={post._id}
             title={post.title}
             username={post.username}
             cityName={post.cityName}

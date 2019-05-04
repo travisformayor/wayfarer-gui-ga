@@ -47,10 +47,11 @@ class UserModel {
   //   return request;
   // }
 
-  // static update(user) {
-  //   let request = axios.put(`${endPoint}/${user._id}`, user)
-  //   return request
-  // }
+   static update(user) {
+    const api_url = `${userEndpoint}/profile`;
+    let request = axios.put(api_url, user, {'credentials': 'include'});
+    return request;
+   }
 }
 
 export default UserModel;

@@ -7,7 +7,8 @@ if(process.env.NODE_ENV === 'production') { // we are on heroku!
   userPostEndpoint = 'https://wayfare-back-345.herokuapp.com/api/v1/posts';
 }
 
-console.log('Env: ', process.env.NODE_ENV);
+console.log('Post Env: ', process.env.NODE_ENV);
+console.log('endpoint set to: ', userPostEndpoint);
 
 class PostModel {
   // Static method to be called

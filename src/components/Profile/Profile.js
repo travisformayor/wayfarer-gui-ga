@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Posts from '../Posts/Posts';
+import Error from './Error';
 import UserModel from "../../models/user";
 
 class Profile extends Component {
@@ -27,18 +28,42 @@ class Profile extends Component {
     console.log('Button Clicked');
     this.setState ({ editMode: true});
   }
-  
+
   onUpdateProfile = (event) => {
     event.preventDefault();
     const updateUser = {
-      name: this.state.name,
+      email: this.state.currentEmail,
+      username: this.state.currentUsername,
+      name: this.state.currentName,
       currentCity: this.state.currentCity,
     }
-    
+    this.updatedUser(updateUser);
   }
 
+  updatedUser = (updateUser) => {
+    UserModel.update(updateUser)
+      .then(res => {
+        console.log("Update response: ", res);
+        // res.data has success set to true if it worked
+        if (res.data.success) {
+          // if success is true, redirect to profile
+          this.props.history.push('/profile'); // withRouter being used here
+        } else if (res.data.errors) {
+          // if fail (errors returned), get the errors
+          this.setState({
+            errors: res.data.errors,
+          })
+        }
+      })
+      .catch(error => {
+        this.setState({error});
+        console.log('Error: ', error);
+      });
+  }
+
+
   getUser = () => {
-    UserModel.get()
+    UserModel.getProfile()
       .then(res => {
         console.log("Get user info response: ", res);
         if (res.data.foundUser.username) {

@@ -79,7 +79,7 @@ class Profile extends Component {
               <ul className="collection with-header">
                 {/* <li className="collection-header"><h4>Posts</h4></li>
                 <li className="collection-item">Post</li> */}
-                <Posts />
+                <Posts posts={this.state.posts}/>
               </ul>
             </div>
           </div>

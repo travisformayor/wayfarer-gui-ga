@@ -16,7 +16,7 @@ class Profile extends Component {
   }
 
   getUser = () => {
-    UserModel.get()
+    UserModel.getProfile()
       .then(res => {
         console.log("Get user info response: ", res);
         if (res.data.foundUser.username) {

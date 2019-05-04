@@ -31,7 +31,7 @@ class UserModel {
     return request;
   }
 
-  static get() {
+  static getProfile() {
     // Use session data to get logged in users info for profile
     const api_url = `${userEndpoint}/profile`;
     let request = axios.get(api_url, {'credentials': 'include'}); // send session cookie

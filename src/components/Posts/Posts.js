@@ -1,30 +1,41 @@
 import React, { Component } from 'react';
 import PostModel from '../../models/userPost';
+import Post from '../Post/Post';
 
 class Posts extends Component {
-
-  componentDidMount() {
-    this.getPosts();
+  state = {
+    posts: [],
   }
 
-  getPosts = () => {
-    PostModel.all()
-      .then(res => {
-        console.log('Posts collected: ', res);
-      })
-      .catch(error => {
-        console.log('Error: ', error);
-      });
-  }
+  // componentDidMount() {
+  //   this.getPosts();
+  // }
+
+  // getPosts = () => {
+  //   PostModel.all()
+  //     .then(res => {
+  //       console.log('Posts collected: ', res);
+  //     })
+  //     .catch(error => {
+  //       console.log('Error: ', error);
+  //     });
+  // }
 
   render() {
+    // let posts = this.props.posts.map( (post) => {
+    //   return (
+    //     <Post
+    //       key={post._id}
+    //       post={post}
+
+    //     />
+    //   )
+    // });
+
     return (
-      <div>
-        <ul className="collection with-header">
-          <li className="collection-header"><h4>Posts</h4></li>
-          <li className="collection-item"><a href="#!" className="collection-item">Post</a></li>
-        </ul>
-      </div>
+      <ul>
+        {/* {posts} */}
+      </ul>
     )
   }
 }

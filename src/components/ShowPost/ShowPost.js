@@ -39,7 +39,7 @@ class ShowPost extends Component {
     const post = this.state.posts.find(post => {
       return post._id == id;
     })
-    
+
     console.log('Found post: ', post);
     return (
       <div className="row">
@@ -48,6 +48,7 @@ class ShowPost extends Component {
             <div className="card-content">
               <span className="card-title">{post && post.title}</span>
               <p>{post && post.content}</p>
+              <p>{post && post.username}</p>
             </div>
             <div className="card-action">
             </div>

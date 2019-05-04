@@ -2,9 +2,9 @@ import axios from 'axios';
 axios.defaults.withCredentials = true; // Gets session cookie from responses
 
 if(process.env.NODE_ENV === 'production') { // we are on heroku!
-  const userEndpoint = 'https://wayfare-back-345.herokuapp.com/api/v1/posts';
+  const userPostEndpoint = 'https://wayfare-back-345.herokuapp.com/api/v1/posts';
 } else {
-  const userEndpoint = 'http://localhost:4000/api/v1/posts'; // localhost
+  const userPostEndpoint = 'http://localhost:4000/api/v1/posts'; // localhost
 }
 
 class PostModel {

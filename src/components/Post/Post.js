@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Posts from '../Posts/Posts';
+import { Link } from 'react-router-dom';
 
 class Post extends Component {
   render() {
@@ -10,10 +10,9 @@ class Post extends Component {
           <div className="card blue-grey darken-1">
             <div className="card-content white-text">
               <span className="card-title">{this.props.title}</span>
-              <p>{this.props.content}</p>
             </div>
             <div className="card-action">
-              <a href="#">Go to Post</a>
+            <Link to={`/post/${this.props.id}`}>Go to Post</Link>
             </div>
           </div>
         </div>

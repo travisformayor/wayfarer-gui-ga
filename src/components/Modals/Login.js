@@ -56,9 +56,9 @@ class Login extends Component {
     let { errors } = this.state;
 
     let submit_button = this.state.formEnabled ? (
-      <input type="submit" value="Signup" /> 
+      <input type="submit" value="Login" /> 
       ) : (
-      <input type="submit" value="Signup" disabled /> );
+      <input type="submit" value="Login" disabled /> );
 
     return (
       <section className="login">

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Posts from '../Posts/Posts';
-import Error from './Error';
+import Error from '../Modals/Error';
 import UserModel from "../../models/user";
 
 class Profile extends Component {
@@ -47,7 +47,8 @@ class Profile extends Component {
         // res.data has success set to true if it worked
         if (res.data.success) {
           // if success is true, redirect to profile
-          this.props.history.push('/profile'); // withRouter being used here
+          console.log('user updated succesfully')
+          this.setState ({ editMode: false });
         } else if (res.data.errors) {
           // if fail (errors returned), get the errors
           this.setState({

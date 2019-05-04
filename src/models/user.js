@@ -1,9 +1,11 @@
 import axios from 'axios';
 axios.defaults.withCredentials = true; // Gets session cookie from responses
 
-// const endPoint = `https://super-crud-api.herokuapp.com/api/users`
-const userEndpoint = 'http://localhost:4000/api/v1/users';
-// Todo : add way for app to detect if its running on Heroku, and switch urls
+if(process.env.NODE_ENV === 'production') { // we are on heroku!
+  const userEndpoint = 'https://wayfare-back-345.herokuapp.com/api/v1/users';
+} else {
+  const userEndpoint = 'http://localhost:4000/api/v1/users'; // localhost
+}
 
 class UserModel {
   // can call this static method with:

@@ -7,6 +7,8 @@ if(process.env.NODE_ENV === 'production') { // we are on heroku!
   const userPostEndpoint = 'http://localhost:4000/api/v1/posts'; // localhost
 }
 
+console.log('Env: ', process.env.NODE_ENV);
+
 class PostModel {
   // Static method to be called
   static all() {

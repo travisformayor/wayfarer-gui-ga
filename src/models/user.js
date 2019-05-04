@@ -3,7 +3,7 @@ axios.defaults.withCredentials = true; // Gets session cookie from responses
 
 let userEndpoint = 'http://localhost:4000/api/v1/users'; // localhost
 
-if(process.env.NODE_ENV === 'production') { // we are on heroku!
+if(process.env.NODE_ENV) { // we are on heroku!
   userEndpoint = 'https://wayfare-back-345.herokuapp.com/api/v1/users';
 }
 

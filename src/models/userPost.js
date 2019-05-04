@@ -1,7 +1,7 @@
 import axios from 'axios';
 axios.defaults.withCredentials = true; // Gets session cookie from responses
 
-const userPostEndpoint = 'http://localhost:4000/api/v1/posts'; // localhost
+let userPostEndpoint = 'http://localhost:4000/api/v1/posts'; // localhost
 
 if(process.env.NODE_ENV === 'production') { // we are on heroku!
   userPostEndpoint = 'https://wayfare-back-345.herokuapp.com/api/v1/posts';

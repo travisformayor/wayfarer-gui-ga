@@ -111,7 +111,7 @@ class Profile extends Component {
 
   render() {
     return (
-      <div>
+      <>
         <h4>Profile Page</h4>
         <div className="row">
           <div className="col s12 m7">
@@ -178,7 +178,7 @@ class Profile extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </>
     )
   }
 }

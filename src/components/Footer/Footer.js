@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Footer.css';
 
 class Footer extends Component {
   render() {
@@ -14,7 +15,7 @@ class Footer extends Component {
         </div>
         <div className="footer-copyright">
           <div className="container">
-            © 2019 Copyright
+            &copy; 2019 Copyright
           </div>
         </div>
       </footer>

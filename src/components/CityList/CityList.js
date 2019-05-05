@@ -2,19 +2,21 @@ import React, { Component } from 'react';
 import CityListItem from '../CityListItem/CityListItem';
 
 class CityList extends Component {
-
   render () {
     let { cities } = this.props;
-    //console.log(cities);
+    console.log(cities);
+
     return (
-      <div>
-        { cities.map(city => (
+      <>
+        {cities.map(city => (
           <CityListItem
             key={city._id}
-            city={city}
+            cityName={city.cityName}
+            cityURL={city.cityURL}
           />
-        ))}
-      </div>
+        ))
+        }
+      </>
     )
   }
 }

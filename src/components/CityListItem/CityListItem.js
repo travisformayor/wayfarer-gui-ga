@@ -3,12 +3,12 @@ import React, { Component } from 'react';
 class CityListItem extends Component {
 
   render () {
-    let { city } = this.props;
-    console.log('my city');
-    console.log(city);
-      return (
-      <h2>{city.name}</h2>
-      )
+    // let { cities } = this.props;
+    console.log('this CityListItem: ', this.props);
+
+    return (
+      <h6>{this.props.cityName}</h6>
+    )
   }
 }
 

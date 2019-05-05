@@ -3,7 +3,10 @@ axios.defaults.withCredentials = true; // Gets session cookie from responses
 
 let userPostEndpoint = 'http://localhost:4000/api/v1/posts'; // localhost
 
-if(process.env.NODE_ENV) { // we are on heroku!
+// note: the following doesn't work unless you use the heroku buildpack. 
+// ex: heroku create app-name --buildpack mars/create-react-app
+// https://github.com/mars/create-react-app-buildpack
+if(process.env.NODE_ENV === 'production') { // we are on heroku!
   userPostEndpoint = 'https://wayfare-back-345.herokuapp.com/api/v1/posts';
 }
 

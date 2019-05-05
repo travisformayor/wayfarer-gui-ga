@@ -1,6 +1,14 @@
 import axios from 'axios';
+axios.defaults.withCredentials = true; // Gets session cookie from responses
 
-const userPostEndpoint = `http://localhost:4000/api/v1/posts`;
+let userPostEndpoint = 'http://localhost:4000/api/v1/posts'; // localhost
+
+if(process.env.NODE_ENV) { // we are on heroku!
+  userPostEndpoint = 'https://wayfare-back-345.herokuapp.com/api/v1/posts';
+}
+
+console.log('Post Env: ', process.env.NODE_ENV);
+console.log('endpoint set to: ', userPostEndpoint);
 
 class PostModel {
   // Static method to be called

@@ -28,7 +28,7 @@ class CreatePost extends Component {
 
   render() {
     return (
-      <React.Fragment>
+      <>
         <div className="row">
           <form className="col s12">
             <div className="row">
@@ -43,7 +43,7 @@ class CreatePost extends Component {
             </div>
           </form>
         </div>
-      </React.Fragment>
+      </>
     )
   }
 

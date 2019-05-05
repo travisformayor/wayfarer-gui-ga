@@ -11,4 +11,5 @@ class CityListItem extends Component {
       )
   }
 }
+
 export default CityListItem;

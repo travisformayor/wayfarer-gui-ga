@@ -34,7 +34,7 @@ class ShowPost extends Component {
   }
 
   render() {
-    
+
     const { id } = this.props.match.params;
     const post = this.state.posts.find(post => {
       return post._id == id;

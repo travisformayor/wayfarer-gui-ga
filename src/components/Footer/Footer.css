@@ -1,9 +1,8 @@
-body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-  }
-
-  main {
-    flex: 1 0 auto;
-  }
+div#root { /* makes the whole page a flex box for header, main, and footer */
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+main {
+  flex: 1 0 auto; /* main flex grows into all the space it needs, making footer sticky */
+}

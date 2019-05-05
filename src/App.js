@@ -6,11 +6,13 @@ import navRoutes from './config/navRoutes';
 class App extends Component {
   render() {
     return (
-      <div>
+      <>
         <Header />
-        { navRoutes }
+        <main>
+          {navRoutes}
+        </main>
         <Footer />
-      </div>
+      </>
     )
   }
 }

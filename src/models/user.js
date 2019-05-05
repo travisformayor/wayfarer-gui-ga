@@ -1,11 +1,15 @@
 import axios from 'axios';
 axios.defaults.withCredentials = true; // Gets session cookie from responses
 
-if(process.env.NODE_ENV === 'production') { // we are on heroku!
-  const userEndpoint = 'https://wayfare-back-345.herokuapp.com/api/v1/users';
-} else {
-  const userEndpoint = 'http://localhost:4000/api/v1/users'; // localhost
+let userEndpoint = 'http://localhost:4000/api/v1/users'; // localhost
+
+if(process.env.NODE_ENV) { // we are on heroku!
+  userEndpoint = 'https://wayfare-back-345.herokuapp.com/api/v1/users';
 }
+
+console.log('User Env: ', process.env.NODE_ENV);
+console.log('endpoint set to: ', userEndpoint);
+
 
 class UserModel {
   // can call this static method with:

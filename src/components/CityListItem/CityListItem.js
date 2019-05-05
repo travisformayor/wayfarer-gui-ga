@@ -9,10 +9,10 @@ class CityListItem extends Component {
 
     return (
       <div className="row">
-        <div className="col s12 m6">
+        <div className="col s12 m4">
           <div className="card blue-grey darken-1">
             <div className="card-action">
-              <Link to={`/${this.props.cityURL}`}>{this.props.cityName}</Link>
+              <Link to={`/${this.props.cityURL}`}><h4>{this.props.cityName}</h4></Link>
             </div>
           </div>
         </div>

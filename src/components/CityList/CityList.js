@@ -4,7 +4,6 @@ import CityListItem from '../CityListItem/CityListItem';
 class CityList extends Component {
   render () {
     let { cities } = this.props;
-    console.log(cities);
 
     return (
       <>

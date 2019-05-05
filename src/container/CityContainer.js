@@ -15,22 +15,20 @@ class CityContainer extends Component {
     const citiesList = [
       {name: 'London', _id: 1},
       {name: 'San Francisco', _id: 2},
-    ] 
+    ]
     this.setState ({
       cities: citiesList,
-    })
+    });
   }
 
   render(){
     return (
       <>
-        <CityList 
+        <CityList
           cities={this.state.cities} />
       </>
     )
   }
-}	
+}
 
-export default CityContainer
-
-
+export default CityContainer;

@@ -5,8 +5,8 @@ import CityModel from '../models/city';
 
 class CityContainer extends Component {
 	state = {
-      cities: [],
-      currentCity: 'san-francisco',
+    cities: [],
+    currentCity: 'san-francisco',
   }
 
   componentDidMount () {

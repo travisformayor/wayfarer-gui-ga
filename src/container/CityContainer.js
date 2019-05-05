@@ -5,12 +5,13 @@ import City from '../components/City/City';
 class CityContainer extends Component {
 	state = {
       cities: [],
-    }
+  }
 
   componentDidMount () {
     // call function to get all city data city data
     this.fetchCities();
   }
+
   fetchCities = () => {
     const citiesList = [
       {name: 'London', _id: 1},
@@ -24,8 +25,9 @@ class CityContainer extends Component {
   render(){
     return (
       <>
-        <CityList
-          cities={this.state.cities} />
+        <h1>{this.props.match.params.cityURL}</h1>
+        {/* <CityList
+          cities={this.props.match.params} /> */}
       </>
     )
   }

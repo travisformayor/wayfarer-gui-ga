@@ -20,6 +20,6 @@ export default (
     <Route path='/profile' component={Profile} />
     <Route path='/logout' component={Logout} />
     <Route path='/post/:id' component={ShowPost} />
-    <Route path='/city/:id' component={City} />
+    <Route path='/:cityURL' component={CityContainer} />
   </Switch>
 )

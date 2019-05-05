@@ -7,7 +7,7 @@ class CityListItem extends Component {
     console.log('my city');
     console.log(city);
       return (
-      <h2>{city.name}</h2>
+      <h2>city list item: {city.name}</h2>
       )
   }
 }

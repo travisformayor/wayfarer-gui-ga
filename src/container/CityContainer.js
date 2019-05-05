@@ -24,7 +24,6 @@ class CityContainer extends Component {
           cities: res.data.allCities
         })
       }
-      console.log("Get cities info fropm this.state: ", this.state);
     })
     .catch(error => {
       // this.setState({ error });
@@ -33,14 +32,14 @@ class CityContainer extends Component {
   }
 
   render(){
+    console.log('cities state', this.state.cities.length)
+    let { cityURL } = this.props.match.params
     return (
       <>
-        <h1>{this.props.match.params.cityURL}</h1>
-        {this.state.cities.map(city => (
-          <h1>{city.cityName}</h1>
-        ))}
-        {/* <CityList
-          cities={this.props.match.params} /> */}
+      
+        <City 
+          cities={this.state.cities}
+          cityURL={cityURL} />
       </>
     )
   }

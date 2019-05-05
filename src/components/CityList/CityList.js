@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CityListItem from '../CityListItem/CityListItem';
+
 class CityList extends Component {
 
   render () {
@@ -7,15 +8,15 @@ class CityList extends Component {
     //console.log(cities);
     return (
       <div>
-      { cities.map(city => (
-      <CityListItem 
-        key={city._id}
-        city={city}
-        />
-       
-      ))}
+        { cities.map(city => (
+          <CityListItem
+            key={city._id}
+            city={city}
+          />
+        ))}
       </div>
     )
   }
 }
+
 export default CityList;

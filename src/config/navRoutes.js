@@ -8,6 +8,7 @@ import Profile from '../components/Profile/Profile';
 import CityContainer from '../container/CityContainer';
 import Posts from '../components/Posts/Posts';
 import ShowPost from '../components/ShowPost/ShowPost';
+import City from '../components/City/City';
 
 export default (
   <Switch>
@@ -19,5 +20,6 @@ export default (
     <Route path='/profile' component={Profile} />
     <Route path='/logout' component={Logout} />
     <Route path='/post/:id' component={ShowPost} />
+    <Route path='/:cityURL' component={CityContainer} />
   </Switch>
 )

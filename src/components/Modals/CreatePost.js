@@ -42,7 +42,7 @@ class CreatePost extends Component {
                     <label htmlFor="title">Title</label>
                   </div>
                   <div className="input-field col s12">
-                    <input disabled id="username" type="text" value={currentUsername} />
+                    <input disabled id="post-username" type="text" value={currentUsername} />
                     <label className="active" htmlFor="username">Username</label>
                   </div>
                   <div className="input-field col s12">

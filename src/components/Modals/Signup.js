@@ -121,7 +121,7 @@ class Signup extends Component {
               <label htmlFor="username">Username</label>
               <input
                   onChange={ this.onInputChange }
-                  type="text" id="username" name="username"
+                  type="text" id="signup-username" name="username"
                   value={this.state.username} />
             </div>
             <div className="form-group">
@@ -142,7 +142,7 @@ class Signup extends Component {
               <label htmlFor="password">Password</label>
               <input
                   onChange={ this.onInputChange }
-                  type="password" id="password" name="password"
+                  type="password" id="signup-password" name="password"
                   value={this.state.password} />
             </div>
             <div className="form-group">

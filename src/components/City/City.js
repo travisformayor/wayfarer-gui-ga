@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import CreatePost from '../Modals/CreatePost';
 
 class City extends Component {
   state = {
@@ -29,8 +30,13 @@ class City extends Component {
         <div className="col s9">
           <h3>{city.cityName}</h3>
           <h4>{city.country}</h4>
+
           <span className="span-button">
-            <a className="btn-floating btn-large waves-effect waves-light red"><i className="material-icons">+</i></a>
+
+            <button data-target="modal1" onCLick={this.showModal}>
+              <a className="btn-floating btn-large waves-effect waves-light red"><i className="material-icons">+</i></a>
+            </button>
+
           </span>
         </div>
       )

@@ -32,7 +32,7 @@ class CreatePost extends Component {
     let { loggedIn, currentUsername, city } = this.props;
     return (
       <>
-        <Modal header="Create Post" trigger={<Button>Add Post</Button>}>
+        <Modal header="Create Post" trigger={<Button className="center">Add Post</Button>}>
           {(loggedIn) ? (
             <div className="row">
               <form className="col s12">

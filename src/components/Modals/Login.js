@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from 'react-router-dom';
+import { Modal } from 'react-materialize';
 import Error from './Error';
 import UserModel from "../../models/user";
 
@@ -9,6 +10,7 @@ class Login extends Component {
     password: "",
     errors: [],
     formEnabled: true,
+    modalOpen: false,
   };
 
   onInputChange = event => {
@@ -37,7 +39,12 @@ class Login extends Component {
         console.log("Login response: ", res);
         // res.data has login set to true if it worked
         if (res.data.login) {
-          // if success (login key exists and is true), redirect to profile
+          // if success (login key exists and is true) ...
+          // Close modal
+          this.setState({modalOpen: false});
+          // Add Logout to the nav bar
+          this.props.controlStatus(true);
+          // Redirect to profile
           this.props.history.push('/profile'); // withRouter being used here
         } else if (res.data.errors) {
           // if fail (errors returned), get the errors
@@ -54,6 +61,22 @@ class Login extends Component {
       });
   };
 
+  onClose = () => {
+    console.log('closed');
+    this.setState({
+      username: "",
+      password: "",
+      modalOpen: false,
+    })
+  }
+
+  onOpen = () => {
+    console.log('opened');
+    this.setState({
+      modalOpen: true,
+    })
+  }
+  
   render() {
     let { errors } = this.state;
 
@@ -63,8 +86,13 @@ class Login extends Component {
       <input type="submit" value="Login" disabled /> );
 
     return (
-      <section className="login">
-        <h1>Login</h1>
+      <Modal 
+        open={this.state.modalOpen} 
+        header="Login" 
+        trigger={<a>Login</a>}
+        options={{onCloseStart: this.onClose, onOpenStart: this.onOpen}}>
+
+        {/* <h1>Login</h1> */}
         {errors.map((error, index) => (
           <Error
             message={error.message}
@@ -94,7 +122,7 @@ class Login extends Component {
           </div>
           {submit_button}
         </form>
-      </section>
+      </Modal>
     );
   }
 }

@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import Posts from '../Posts/Posts';
+import Seattle from '../../img/seattle.jpeg';
+import SF from '../../img/san-francisco.jpg';
+import Sydney from '../../img/sydney.jpg';
+import London from '../../img/london.jpg';
+import CreatePost from '../Modals/CreatePost';
 
 class City extends Component {
 
-  
   render () {
 
     let { cities, allPosts, currentCity } = this.props;
@@ -24,10 +28,40 @@ class City extends Component {
     }
     // console.log('Current city posts', cityPosts);
 
+    let image;
+    switch (currentCity) {
+      case 'san-francisco':
+        image = <img class="responsive-img" src={SF} alt="San Francisco" />;
+        break;
+      case 'seattle':
+        image = <img class="responsive-img" src={Seattle} alt="Seattle" />;
+        break;
+      case 'london':
+        image = <img class="responsive-img" src={London} alt="London" />;
+        break;
+      case 'sydney':
+        image = <img class="responsive-img" src={Sydney} alt="Sydney" />;
+        break;
+      default:
+        image = <img class="responsive-img"  alt="Error Loading Image" />;
+    }
+
       return (
       <div className="col s9">
+        <div className="city-header">
         <h1>{city && city.cityName}</h1>
         <h1>{city && city.country}</h1>
+        </div>
+        <div className="city-img">
+          {image}
+        </div>
+
+        <CreatePost 
+          city={city.cityURL} 
+          // We also need to pass the logged in username 
+          // So i guess CityContainer needs to do a profile api all also
+          // ... since only /profile can get there username out of the session cookie
+          />
 
         <div className="posts-holder">
           <Posts posts={cityPosts} />

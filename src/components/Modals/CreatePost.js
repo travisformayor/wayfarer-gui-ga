@@ -6,6 +6,7 @@ class CreatePost extends Component {
   constructor() {
     super()
     this.state = {
+      loggedIn: '',
       cityURL: '',
       title: '',
       content: '',
@@ -24,9 +25,10 @@ class CreatePost extends Component {
   onFormSubmit = (event) => {
     event.preventDefault()
     const newPost = {
-      cityURL: this.state.cityURL,
+      cityURL: this.props.city,
       title: this.state.title,
       content: this.state.content,
+      username: this.props.currentUsername,
     }
     this.createPost(newPost);
   }
@@ -55,10 +57,10 @@ class CreatePost extends Component {
         <Modal header="Create Post" trigger={<Button>Add Post</Button>}>
           {(loggedIn) ? (
             <div className="row">
-              <form className="col s12">
+              <form className="col s12" onSubmit={this.onFormSubmit}>
                 <div className="row">
                   <div className="input-field col s12">
-                    <input id="title" type="text" onChange={this.onFormSubmit} value={title} />
+                    <input id="title" type="text" onChange={this.onInputChange} value={title} />
                     <label htmlFor="title">Title</label>
                   </div>
                   <div className="input-field col s12">
@@ -70,11 +72,11 @@ class CreatePost extends Component {
                     <label className="active" htmlFor="city">City ID</label>
                   </div>
                   <div className="input-field col s12">
-                    <textarea id="content" className="materialize-textarea" onChange={this.onFormSubmit} value={content} ></textarea>
-                    <label htmlFor="textarea1">Textarea</label>
+                    <textarea id="content" className="materialize-textarea" onChange={this.onInputChange} value={content}></textarea>
+                    <label htmlFor="content">Textarea</label>
                   </div>
-                  <div className="">
-                    <button type="submit" id="addPost" className="btn waves-effect waves-light">Post</button>
+                  <div className="input-field col s12">
+                    <button type="submit" id="createPost" className="btn waves-effect waves-light">Post</button>
                   </div>
                 </div>
               </form>
@@ -86,9 +88,6 @@ class CreatePost extends Component {
       </>
     )
   }
-
-
-
 }
 
 export default CreatePost;

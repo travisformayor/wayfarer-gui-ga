@@ -27,6 +27,7 @@ class City extends Component {
     // console.log('found city ', city)
 
       return (
+<<<<<<< HEAD
         <div className="col s9">
           <h3>{city.cityName}</h3>
           <h4>{city.country}</h4>
@@ -39,6 +40,12 @@ class City extends Component {
 
           </span>
         </div>
+=======
+      <div className="col s9">
+        <h1>{city && city.cityName}</h1>
+        <h1>{city && city.country}</h1>
+      </div>
+>>>>>>> dev
       )
   }
 }

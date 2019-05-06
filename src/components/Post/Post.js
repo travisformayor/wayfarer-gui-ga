@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 class Post extends Component {
   render() {
-    console.log('post console: ', this.props);
+    // console.log('post console: ', this.props);
     return (
       <div className="row">
         <div className="col s12 m6">

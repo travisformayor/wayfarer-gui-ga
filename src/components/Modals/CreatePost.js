@@ -58,8 +58,8 @@ class CreatePost extends Component {
     let { loggedIn, currentUsername, city } = this.props;
     let { cityURL, title, content, errors } = this.state;
     return (
-      <>
-        <Modal header="Create Post" trigger={<Button>Add Post</Button>}>
+      <><div className="valign"><div className="center-align">
+        <Modal header="Create Post" trigger={<Button className="center-align">Add Post</Button>}>
           {(loggedIn) ? (
             <div className="row">
               <form className="col s12" onSubmit={this.onFormSubmit}>
@@ -69,7 +69,7 @@ class CreatePost extends Component {
                     <label htmlFor="title">Title</label>
                   </div>
                   <div className="input-field col s12">
-                    <input disabled id="username" type="text" value={currentUsername} />
+                    <input disabled id="post-username" type="text" value={currentUsername} />
                     <label className="active" htmlFor="username">Username</label>
                   </div>
                   <div className="input-field col s12">
@@ -90,6 +90,7 @@ class CreatePost extends Component {
             <h2>You are not logged in</h2>
           )}
         </Modal>
+        </div></div>
       </>
     )
   }

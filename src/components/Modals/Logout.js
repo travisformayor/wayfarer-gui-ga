@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import { Modal } from 'react-materialize';
 import UserModel from "../../models/user";
 
 class Logout extends Component {
 
-  componentDidMount() {
+  onOpen = () => {
+    console.log('opened');
     this.logoutUser();
   }
 
@@ -12,6 +14,10 @@ class Logout extends Component {
     UserModel.logout()
       .then(res => {
         console.log('User logged out: ', res);
+        // Remove Logout to the nav bar
+        this.props.controlStatus(false);
+        // Redirect to home
+        this.props.history.push('/');
       })
       .catch(error => {
         console.log('Error: ', error);
@@ -19,8 +25,18 @@ class Logout extends Component {
   };
 
   render() {
+    let button = (this.props.loginStatus) ? (
+      <a>Logout</a>
+     ) : (
+      <a></a>
+     )
     return (
-      <h1>Logged Out!</h1>
+      <Modal 
+        trigger={button}
+        options={{onOpenStart: this.onOpen}}>
+        
+        <h1>Logged Out!</h1>
+      </Modal>
     )
   }
 }

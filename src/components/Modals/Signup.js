@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import { Modal } from 'react-materialize';
 import Error from './Error';
 import UserModel from '../../models/user';
 
@@ -7,12 +8,14 @@ class Signup extends Component {
   state = {
     email: '',
     name: '',
+    username: '',
     fullName: '',
     password: '',
     password2: '',
     currentCity: '',
     errors: [],
     formEnabled: true,
+    modalOpen: false,
   }
 
   onInputChange = (event) => {
@@ -46,6 +49,7 @@ class Signup extends Component {
         // res.data has success set to true if it worked
         if (res.data.success) {
           // if success is true, redirect to profile
+          this.setState({modalOpen: false});
           this.props.history.push('/profile'); // withRouter being used here
         } else if (res.data.errors) {
           // if fail (errors returned), get the errors
@@ -62,6 +66,27 @@ class Signup extends Component {
       });
   }
 
+  onClose = () => {
+    console.log('closed');
+    this.setState({
+      email: '',
+      name: '',
+      username: '',
+      fullName: '',
+      password: '',
+      password2: '',
+      currentCity: '',
+      modalOpen: false,
+    })
+  }
+
+  onOpen = () => {
+    console.log('opened');
+    this.setState({
+      modalOpen: true,
+    })
+  }
+
   render() {
     let { errors } = this.state;
 
@@ -71,8 +96,13 @@ class Signup extends Component {
       <input type="submit" value="Signup" disabled /> );
      
     return(
-      <section className="signup">
-          <h1>Signup</h1>
+      <Modal 
+        open={this.state.modalOpen} 
+        header="Sign Up" 
+        trigger={<a>Sign Up</a>}
+        options={{onCloseStart: this.onClose, onOpenStart: this.onOpen}}>
+
+          {/* <h1>Signup</h1> */}
           {errors.map((error, index) => (
           <Error
             message={error.message}
@@ -91,7 +121,7 @@ class Signup extends Component {
               <label htmlFor="username">Username</label>
               <input
                   onChange={ this.onInputChange }
-                  type="text" id="username" name="username"
+                  type="text" id="signup-username" name="username"
                   value={this.state.username} />
             </div>
             <div className="form-group">
@@ -102,10 +132,17 @@ class Signup extends Component {
                   value={this.state.name} />
             </div>
             <div className="form-group">
+              <label htmlFor="currentCity">Current City</label>
+              <input
+                  onChange={ this.onInputChange }
+                  type="text" id="currentCity" name="currentCity"
+                  value={this.state.currentCity} />
+            </div>
+            <div className="form-group">
               <label htmlFor="password">Password</label>
               <input
                   onChange={ this.onInputChange }
-                  type="password" id="password" name="password"
+                  type="password" id="signup-password" name="password"
                   value={this.state.password} />
             </div>
             <div className="form-group">
@@ -115,16 +152,9 @@ class Signup extends Component {
                   type="password" id="password2" name="password2"
                   value={this.state.password2} />
             </div>
-            <div className="form-group">
-              <label htmlFor="currentCity">Current City</label>
-              <input
-                  onChange={ this.onInputChange }
-                  type="text" id="currentCity" name="currentCity"
-                  value={this.state.currentCity} />
-            </div>
             {submit_button}
           </form>
-      </section>
+      </Modal>
     );
   };
 };

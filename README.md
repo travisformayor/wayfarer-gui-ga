@@ -36,6 +36,8 @@ Users has the ability to
 - Pair Programming && Switching tasks
 - Cookies 🍪
 - Modals for days
+- Detects if its on Heroku and swaps the api url
+- C-C-C-Cors
 - New posts show up instantly on top
 - Seed posts are random
 - Seed password cheat

@@ -19,7 +19,7 @@ class Header extends Component {
   render() {
     
     return (
-      <div>
+      <div className="navbar-fixed">
         <nav>
           <div className="nav-wrapper">
             <a href="#" className="brand-logo left">

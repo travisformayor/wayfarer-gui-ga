@@ -77,6 +77,7 @@ class CityContainer extends Component {
         <CityList 
           cities={this.state.cities} 
           currentCity={cityURL}/>
+        <div className="col s3" style={{minWidth: '150px'}}></div>
         <City 
           cities={this.state.cities}
           currentCity={cityURL} 

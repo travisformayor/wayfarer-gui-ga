@@ -15,8 +15,12 @@ class ShowPost extends Component {
       })
       .then(fetchedPost => {
         console.log('Post response: ', fetchedPost)
+        let { foundPost } = fetchedPost.data;
+        if (foundPost.cityURL !== undefined) {
+          foundPost.cityURL = foundPost.cityURL.replace("-", " ");
+        }
         this.setState({
-          post: fetchedPost.data.foundPost,
+          post: foundPost,
         });
       });
   };
@@ -33,8 +37,10 @@ class ShowPost extends Component {
           <div className="card">
             <div className="card-content">
               <span className="card-title">{post && post.title}</span>
-              <p>{post && post.content}</p>
-              <p>{post && post.username}</p>
+              <p style={{'textTransform': 'capitalize'}}>User: {post && post.username}</p>
+              <p style={{'textTransform': 'capitalize'}}>City: {post && post.cityURL}</p>
+              <p>Content: {post && post.content}</p>
+              
             </div>
             <div className="card-action">
             </div>

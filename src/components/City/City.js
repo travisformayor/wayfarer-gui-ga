@@ -66,9 +66,10 @@ class City extends Component {
         <CreatePost
           city={city.cityURL}
           loggedIn={this.props.loggedIn}
-          currentUsername={this.props.currentUsername} />
+          currentUsername={this.props.currentUsername}
+          getAllPosts={this.props.getAllPosts} />
 
-        <div className="posts-holder">
+        <div className="posts-holder col s12">
           <Posts posts={cityPosts} />
 
         </div>

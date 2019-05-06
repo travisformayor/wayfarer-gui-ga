@@ -47,7 +47,7 @@ class CityContainer extends Component {
       .then(fetchedPosts => {
         // console.log('All posts: ', fetchedPosts);
         this.setState({
-          posts: fetchedPosts.data.allPosts,
+          posts: fetchedPosts.data.allPosts.reverse(),
         });
       });
   };
@@ -82,7 +82,8 @@ class CityContainer extends Component {
           currentCity={cityURL} 
           allPosts={this.state.posts}
           loggedIn={this.state.loggedIn}
-          currentUsername={this.state.currentUsername} />
+          currentUsername={this.state.currentUsername}
+          getAllPosts={this.getAllPosts} />
       </div>
     )
   }

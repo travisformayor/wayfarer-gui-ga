@@ -4,6 +4,7 @@ import Posts from '../Posts/Posts';
 import Error from '../Modals/Error';
 import UserModel from "../../models/user";
 import PostModel from '../../models/userPost';
+import './Profile.css'
 
 class Profile extends Component {
   state = {
@@ -97,7 +98,7 @@ class Profile extends Component {
       })
       .then(fetchedPosts => {
         this.setState({
-          posts: fetchedPosts.data.foundPosts,
+          posts: fetchedPosts.data.foundPosts.reverse(),
         });
       });
   };
@@ -106,76 +107,74 @@ class Profile extends Component {
     let { errors } = this.state;
     return (
       <>
-        <h4>Profile Page</h4>
+        <h4 className="center-align">Profile Page</h4>
         {errors.map((error, index) => (
           <Error
             message={error.message}
             key={index}
           />
         ))}
-        <div className="row">
-          <div className="col s12 m7">
-            <div className="card blue-grey darken-1">
-              <div className="card-content white-text">
-                <span className="card-title">User Profile</span>
-                
-                {this.state.editMode ? (
-                  <>
-                    <label htmlFor="currentName">Full Name</label>
-                    <input 
-                      onChange={ this.onInputChange }
-                      type="text" id="currentName" name="currentName"
-                      value={this.state.currentName} 
-                    />
-                    <label htmlFor="currentUserName">User Name</label>
-                    <input 
-                      onChange={ this.onInputChange }
-                      type="text" id="currentUsername" name="currentUsername"
-                      value={this.state.currentUsername} 
-                    />
-                    <label htmlFor="currentEmail">Email</label>
-                    <input 
-                      onChange={ this.onInputChange }
-                      type="text" id="currentEmail" name="currentEmail"
-                      value={this.state.currentEmail} 
-                    />
-                    <label htmlFor="currentCity">Current City</label>
-                    <input 
-                      onChange={ this.onInputChange }
-                      type="text" id="currentCity" name="currentCity"
-                      value={this.state.currentCity} 
-                    />
-                    <p>Sign Up Date {this.state.signupDate}</p>
-                  </>
-                ) : (
-                  <>
-                    <p>Name: {this.state.currentName}</p>
-                    <p>Username: {this.state.currentUsername}</p>
-                    <p>Email: {this.state.currentEmail}</p>
-                    <p>Current City: {this.state.currentCity}</p>
-                    <p>Sign Up Date {this.state.signupDate}</p>
-                  </>
-                )}
-              </div>
+        <div className="profile-holder">
+          <div className="card">
+            <div className="card-content center">
+              <span className="card-title">User Profile</span>
+              
+              {this.state.editMode ? (
+                <>
+                  <label htmlFor="currentName">Full Name</label>
+                  <input 
+                    onChange={ this.onInputChange }
+                    type="text" id="currentName" name="currentName"
+                    value={this.state.currentName} 
+                  />
+                  <label htmlFor="currentUserName">User Name</label>
+                  <input 
+                    onChange={ this.onInputChange }
+                    type="text" id="currentUsername" name="currentUsername"
+                    value={this.state.currentUsername} 
+                  />
+                  <label htmlFor="currentEmail">Email</label>
+                  <input 
+                    onChange={ this.onInputChange }
+                    type="text" id="currentEmail" name="currentEmail"
+                    value={this.state.currentEmail} 
+                  />
+                  <label htmlFor="currentCity">Current City</label>
+                  <input 
+                    onChange={ this.onInputChange }
+                    type="text" id="currentCity" name="currentCity"
+                    value={this.state.currentCity} 
+                  />
+                  <p>Sign Up Date {this.state.signupDate}</p>
+                </>
+              ) : (
+                <>
+                  <p>Name: {this.state.currentName}</p>
+                  <p>Username: {this.state.currentUsername}</p>
+                  <p>Email: {this.state.currentEmail}</p>
+                  <p>Current City: {this.state.currentCity}</p>
+                  <p>Sign Up Date {this.state.signupDate}</p>
+                </>
+              )}
+            
 
-              <div className="card-action">
-                {this.state.editMode ? (
-                  <button onClick={ this.onUpdateProfile } id='editProfile'>
-                    update Profile
-                  </button>
-                ) : (
-                  <button onClick={ this.onEditProfile } id='editProfile'>
-                    Edit Profile
-                  </button>
-                )}
-
-              </div>
-              <ul className="collection with-header">
-                {/* <li className="collection-header"><h4>Posts</h4></li>
-                <li className="collection-item">Post</li> */}
-                <Posts posts={this.state.posts}/>
-              </ul>
+            <div className="card-action">
+              {this.state.editMode ? (
+                <button onClick={ this.onUpdateProfile } id='editProfile'>
+                  update Profile
+                </button>
+              ) : (
+                <button onClick={ this.onEditProfile } id='editProfile'>
+                  Edit Profile
+                </button>
+              )}
             </div>
+            </div>
+            <ul className="collection with-header">
+              {/* <li className="collection-header"><h4>Posts</h4></li>
+              <li className="collection-item">Post</li> */}
+              <Posts posts={this.state.posts}/>
+            </ul>
           </div>
         </div>
       </>

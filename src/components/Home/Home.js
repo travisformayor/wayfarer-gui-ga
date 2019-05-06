@@ -14,17 +14,17 @@ class Home extends Component {
       <div className="col s12 m12" >
         <div className="center">
         <img src={logo}/>
-        <div class="row">
+        <div className="row">
 
-      <div class="col s4">
+      <div className="col s4">
         <h5>Topic 1</h5>
         <p> Lorem ipsum dolor sit amet, eu quod quot ipsum vel, id eum singulis postulant. Eum te numquam facilisi intellegebat. Ius no ipsum eloquentiam. Oblique propriae qui te, legere periculis no his.  </p>
       </div>
-      <div class="col s4">
+      <div className="col s4">
         <h5>Topic 2</h5>
         <p>Lorem ipsum dolor sit amet, eu quod quot ipsum vel, id eum singulis postulant. Eum te numquam facilisi intellegebat. Ius no ipsum eloquentiam. Oblique propriae qui te, legere periculis no his.</p>
       </div>
-      <div class="col s4">
+      <div className="col s4">
         <h5>Topic3</h5>
         <p>Lorem ipsum dolor sit amet, eu quod quot ipsum vel, id eum singulis postulant. Eum te numquam facilisi intellegebat. Ius no ipsum eloquentiam. Oblique propriae qui te, legere periculis no his.</p>
       </div>

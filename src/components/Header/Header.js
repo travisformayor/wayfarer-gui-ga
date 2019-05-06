@@ -23,12 +23,12 @@ class Header extends Component {
       <div>
         <nav>
           <div className="nav-wrapper">
-            <a href="#" className="brand-logo">
+            <a href="#" className="brand-logo left">
               {/* <img src={logo} width="30px" height="auto" /> */}
               Wayfarer
             </a>
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-            <ul class="right hide-on-med-and-down">
+            
+            <ul id="nav-moile" className="right">
             <li><Link to={'/'}>Home</Link></li>
             <li><Link to={'/san-francisco'}>Cities</Link></li>
             <li><Login controlStatus={this.isLoggedIn} /></li>
@@ -39,15 +39,6 @@ class Header extends Component {
             </ul>
           </div>
         </nav>
-          <ul class="sidenav" id="mobile-demo">
-            <li><Link to={'/'}>Home</Link></li>
-            <li><Link to={'/san-francisco'}>Cities</Link></li>
-            <li><Login controlStatus={this.isLoggedIn} /></li>
-            <li><SignUp /></li>
-            <li><Link to={'/profile'}>Profile</Link></li>
-            <li><Logout controlStatus={this.isLoggedIn} 
-                  loginStatus={this.state.loggedIn} /></li>
-          </ul>
         </div>
 
         

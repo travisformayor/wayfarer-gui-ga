@@ -10,6 +10,13 @@ class City extends Component {
 
   render () {
 
+    let cityStyle = {
+      width: '90%',
+      height: '90%',
+
+
+    }
+
     let { cities, allPosts, currentCity } = this.props;
 
     let city = ''
@@ -31,10 +38,10 @@ class City extends Component {
     let image;
     switch (currentCity) {
       case 'san-francisco':
-        image = <img className="responsive-img" src={SF} alt="San Francisco" />;
+        image = <img className="responsive-img" src={SF} alt="San Francisco" width="100%" height="100%"/>;
         break;
       case 'seattle':
-        image = <img className="responsive-img" src={Seattle} alt="Seattle" />;
+        image = <img src={Seattle} alt="Seattle" width="650px" height="400px"/>;
         break;
       case 'london':
         image = <img className="responsive-img" src={London} alt="London" />;
@@ -49,10 +56,12 @@ class City extends Component {
       return (
       <div className="col s9">
         <div className="city-header">
-        <h1>{city && city.cityName}</h1>
-        <h1>{city && city.country}</h1>
+        <div className="center">
+        <h3>{city && city.cityName}</h3>
+        <h4>{city && city.country}</h4>
         </div>
-        <div className="city-img">
+        </div>
+        <div className="city-img s4 center" >
           {image}
         </div>
 
@@ -61,7 +70,7 @@ class City extends Component {
           loggedIn={this.props.loggedIn}
           currentUsername={this.props.currentUsername} />
 
-        <div className="posts-holder">
+        <div className="posts-holder center">
           <Posts posts={cityPosts} />
         
         </div>

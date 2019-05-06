@@ -17,10 +17,10 @@ class City extends Component {
     // console.log('found city ', city)
 
       return (
-      <>
+      <div className="col s9">
         <h1>{city.cityName}</h1>
         <h1>{city.country}</h1>
-      </>
+      </div>
       )
   }
 }

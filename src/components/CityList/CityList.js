@@ -6,7 +6,7 @@ class CityList extends Component {
     let { cities } = this.props;
 
     return (
-      <>
+      <div className="col s3">
         {cities.map(city => (
           <CityListItem
             key={city._id}
@@ -15,7 +15,7 @@ class CityList extends Component {
           />
         ))
         }
-      </>
+      </div>
     )
   }
 }

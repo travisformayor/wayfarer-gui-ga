@@ -42,8 +42,11 @@ Users has the ability to
 - Logout link only when logged in
 - Profile inaccessable when logged out
 - Backend validation
+- New Post fills username and city and disabled input
 
 **The Gauntlet**
 - The one task and kept coming back over and over again
+
+React Component <-> React Model (Axios) <-> Express API <-> Express DB
 
 ![Master this](src/img/gauntlet.jpg)

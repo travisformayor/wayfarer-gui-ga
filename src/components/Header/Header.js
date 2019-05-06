@@ -18,16 +18,17 @@ class Header extends Component {
   }
 
   render() {
-
+    
     return (
-      
+      <div>
         <nav>
           <div className="nav-wrapper">
-            <a href="#" className="brand-logo left">
+            <a href="#" className="brand-logo">
               {/* <img src={logo} width="30px" height="auto" /> */}
               Wayfarer
             </a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
             <li><Link to={'/'}>Home</Link></li>
             <li><Link to={'/san-francisco'}>Cities</Link></li>
             <li><Login controlStatus={this.isLoggedIn} /></li>
@@ -38,6 +39,17 @@ class Header extends Component {
             </ul>
           </div>
         </nav>
+          <ul class="sidenav" id="mobile-demo">
+            <li><Link to={'/'}>Home</Link></li>
+            <li><Link to={'/san-francisco'}>Cities</Link></li>
+            <li><Login controlStatus={this.isLoggedIn} /></li>
+            <li><SignUp /></li>
+            <li><Link to={'/profile'}>Profile</Link></li>
+            <li><Logout controlStatus={this.isLoggedIn} 
+                  loginStatus={this.state.loggedIn} /></li>
+          </ul>
+        </div>
+
         
       
     )

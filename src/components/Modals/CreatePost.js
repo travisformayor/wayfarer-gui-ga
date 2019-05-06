@@ -30,19 +30,14 @@ class CreatePost extends Component {
   render() {
     return (
       <>
-        <div className="row">
-          <form className="col s12">
-            <div className="row">
-              <div className="input-field col s12">
-                <input id="title" type="text" />
-                <label htmlFor="title">Title</label>
-              </div>
-              <div className="input-field col s12">
-                <textarea id="textarea1" class="materialize-textarea"></textarea>
-                <label htmlFor="textarea1">Textarea</label>
-              </div>
-            </div>
-          </form>
+        <div id="modal1" className="modal">
+          <div className="modal-content">
+            <h4>Create a new post</h4>
+            <p>A bunch of text</p>
+          </div>
+          <div className="modal-footer">
+            <a href="#!" className="modal-close waves-effect waves-green btn-flat">Post</a>
+          </div>
         </div>
       </>
     )

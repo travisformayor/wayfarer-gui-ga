@@ -15,7 +15,6 @@ export default (
     <Route exact path='/' component={Home} />
     <Route path='/login' component={Login} />
     <Route path='/signup' component={Signup} />
-    <Route path='/cities' component={CityContainer} />
     <Route path='/posts' component={Posts} />
     <Route path='/profile' component={Profile} />
     <Route path='/logout' component={Logout} />

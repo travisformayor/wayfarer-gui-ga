@@ -1,54 +1,46 @@
 import React, { Component } from 'react';
+import PostModel from '../../models/userPost';
 
 class ShowPost extends Component {
   state = {
-    posts: [],
+    post: [],
+    id: this.props.match.params.id,
   }
 
-  getUserPosts = () => {
-    const posts = [
-      {
-        username: 'dave',
-        cityName: 'London',
-        content: 'This is a city',
-        date: Date.now(),
-        title: 'London Bridge',
-        _id: 1,
-      },
-      {
-        username: 'mary',
-        cityName: 'SF',
-        content: 'This is a foggy city',
-        date: Date.now(),
-        title: 'Golden Gate Bridge',
-        _id: 2,
-      }
-    ]
-    this.setState({
-      posts: posts,
-    })
+  getPost = (id) => {
+    PostModel.oneById(id)
+      .catch(error => {
+        this.setState({errors: [{message: 'Trouble retrieving post. Please try again.'}]})
+        console.log('Error getting post: ', error)
+      })
+      .then(fetchedPost => {
+        console.log('Post response: ', fetchedPost)
+        let { foundPost } = fetchedPost.data;
+        if (foundPost.cityURL !== undefined) {
+          foundPost.cityURL = foundPost.cityURL.replace("-", " ");
+        }
+        this.setState({
+          post: foundPost,
+        });
+      });
   };
 
   componentDidMount() {
-    this.getUserPosts();
+    this.getPost(this.state.id);
   }
 
   render() {
-
-    const { id } = this.props.match.params;
-    const post = this.state.posts.find(post => {
-      return post._id == id;
-    })
-
-    console.log('Found post: ', post);
+    let { post } = this.state;
     return (
       <div className="row">
         <div className="col m16">
           <div className="card">
             <div className="card-content">
               <span className="card-title">{post && post.title}</span>
-              <p>{post && post.content}</p>
-              <p>{post && post.username}</p>
+              <p style={{'textTransform': 'capitalize'}}>User: {post && post.username}</p>
+              <p style={{'textTransform': 'capitalize'}}>City: {post && post.cityURL}</p>
+              <p>Content: {post && post.content}</p>
+              
             </div>
             <div className="card-action">
             </div>

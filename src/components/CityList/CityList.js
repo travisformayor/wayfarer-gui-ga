@@ -2,18 +2,20 @@ import React, { Component } from 'react';
 import CityListItem from '../CityListItem/CityListItem';
 
 class CityList extends Component {
-
   render () {
     let { cities } = this.props;
-    //console.log(cities);
+
     return (
-      <div>
-        { cities.map(city => (
+      <div className="col s3">
+        {cities.map(city => (
           <CityListItem
             key={city._id}
-            city={city}
+            cityName={city.cityName}
+            cityURL={city.cityURL}
+            currentCity={this.props.currentCity}
           />
-        ))}
+        ))
+        }
       </div>
     )
   }

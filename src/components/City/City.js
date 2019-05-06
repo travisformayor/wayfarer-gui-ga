@@ -30,26 +30,25 @@ class City extends Component {
     }
     // console.log('Current city posts', cityPosts);
 
-      return (
-        <div className="col s9">
-          <h1>{city && city.cityName}</h1>
-          <h1>{city && city.country}</h1>
+    return (
+      <div className="col s9">
+        <h1>{city && city.cityName}</h1>
+        <h1>{city && city.country}</h1>
 
-          <div className="posts-holder">
-            <Posts posts={cityPosts} />
-
-          </div>
-
-            <div className="col s9">
-              <h3>{city.cityName}</h3>
-              <h4>{city.country}</h4>
-
-              <button data-target="modal1" id="modal1">
-                <a className="btn-floating btn-large waves-effect waves-light red"><i className="material-icons">+</i></a>
-              </button>
-            </div>
+        <div className="posts-holder">
+          <Posts posts={cityPosts} />
         </div>
-      )
+
+        <div className="col s9">
+          <h3>{city.cityName}</h3>
+          <h4>{city.country}</h4>
+
+          <button data-target="modal1" id="modal1">
+            <a className="btn-floating btn-large waves-effect waves-light red"><i className="material-icons">+</i></a>
+          </button>
+        </div>
+      </div>
+    )
   }
 }
 

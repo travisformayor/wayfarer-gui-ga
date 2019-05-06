@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Modal, Button } from 'react-materialize';
 
 class CreatePost extends Component {
   constructor() {
@@ -29,20 +30,22 @@ class CreatePost extends Component {
   render() {
     return (
       <>
-        <div className="row">
-          <form className="col s12">
-            <div className="row">
-              <div className="input-field col s12">
-                <input id="title" type="text" />
-                <label htmlFor="title">Title</label>
+        <Modal header="Modal Header" trigger={<Button>Add Post</Button>}>
+          <div className="row">
+            <form className="col s12">
+              <div className="row">
+                <div className="input-field col s12">
+                  <input id="title" type="text" />
+                  <label htmlFor="title">Title</label>
+                </div>
+                <div className="input-field col s12">
+                  <textarea id="textarea1" class="materialize-textarea"></textarea>
+                  <label htmlFor="textarea1">Textarea</label>
+                </div>
               </div>
-              <div className="input-field col s12">
-                <textarea id="textarea1" class="materialize-textarea"></textarea>
-                <label htmlFor="textarea1">Textarea</label>
-              </div>
-            </div>
-          </form>
-        </div>
+            </form>
+          </div>
+        </Modal>
       </>
     )
   }

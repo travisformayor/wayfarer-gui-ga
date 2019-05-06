@@ -4,6 +4,7 @@ import Seattle from '../../img/seattle.jpeg';
 import SF from '../../img/san-francisco.jpg';
 import Sydney from '../../img/sydney.jpg';
 import London from '../../img/london.jpg';
+import CreatePost from '../Modals/CreatePost';
 
 class City extends Component {
 
@@ -54,7 +55,13 @@ class City extends Component {
         <div className="city-img">
           {image}
         </div>
-        
+
+        <CreatePost 
+          city={city.cityURL} 
+          // We also need to pass the logged in username 
+          // So i guess CityContainer needs to do a profile api all also
+          // ... since only /profile can get there username out of the session cookie
+          />
 
         <div className="posts-holder">
           <Posts posts={cityPosts} />

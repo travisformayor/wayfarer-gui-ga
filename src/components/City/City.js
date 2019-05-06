@@ -56,14 +56,14 @@ class City extends Component {
           {image}
         </div>
 
-        <CreatePost 
-          city={city.cityURL} 
+        <CreatePost
+          city={city.cityURL}
           loggedIn={this.props.loggedIn}
           currentUsername={this.props.currentUsername} />
 
         <div className="posts-holder">
           <Posts posts={cityPosts} />
-        
+
         </div>
       </div>
       )

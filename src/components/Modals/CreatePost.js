@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Modal, Button } from 'react-materialize';
+import PostModel from '../../models/userPost';
 
 class CreatePost extends Component {
   constructor() {
     super()
-    this.state = {
+    state = {
       cityURL: '',
       title: '',
       content: '',
@@ -12,20 +13,33 @@ class CreatePost extends Component {
   }
 
   onInputChange = (event) => {
+    const { cityURL, title, content } = event.target;
     this.setState({
-      cityURL: event.target.value,
-      title: event.target.value,
-      content: event.target.value,
+      [name]: value,
     });
   }
 
   onFormSubmit = (event) => {
     event.preventDefault()
-    let post = this.state.post
-    this.props.createPost(post)
-    this.setState({
-      post: '',
-    })
+    const newPost = {
+      cityURL: this.state.cityURL,
+      title: this.state.title,
+      content: this.state.content,
+    }
+    this.createPost(newPost);
+  }
+
+  createPost = (post) => {
+    let newPost = {
+      body: post,
+    }
+
+    PostModel.create(newPost)
+      .then((res) => {
+        let posts = this.state.posts
+        let newPosts = posts.push(res.data)
+        this.setState({ newPosts })
+      })
   }
 
   render() {
@@ -52,11 +66,11 @@ class CreatePost extends Component {
                     <label className="active" htmlFor="city">City ID</label>
                   </div>
                   <div className="input-field col s12">
-                    <textarea id="textarea1" className="materialize-textarea" onChange={this.onFormSubmit} value={content} ></textarea>
+                    <textarea id="content" className="materialize-textarea" onChange={this.onFormSubmit} value={content} ></textarea>
                     <label htmlFor="textarea1">Textarea</label>
                   </div>
                   <div className="">
-                    <button type="submit" className="btn waves-effect waves-light">Post</button>
+                    <button type="submit" id="addPost" className="btn waves-effect waves-light">Post</button>
                   </div>
                 </div>
               </form>

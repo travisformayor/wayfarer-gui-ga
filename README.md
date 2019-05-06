@@ -34,6 +34,7 @@ Users has the ability to
 - Pair Programming && Switching tasks
 - Our Trello
 - Cookies 🍪
+- Zach's Sunday Brunch
 - Modals for days
 - Detects if its on Heroku and swaps the api url
 - C-C-C-Cors

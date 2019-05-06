@@ -5,10 +5,9 @@ import CityModel from '../models/city';
 
 class CityContainer extends Component {
 	state = {
-      cities: [],
-      currentCity: 'san-francisco',
+    cities: [],
+    currentCity: 'san-francisco',
   }
-  
 
   componentDidMount () {
     // call function to get all city data city data
@@ -35,12 +34,7 @@ class CityContainer extends Component {
   render(){
     return (
       <>
-        <h1>{this.props.match.params.cityURL}</h1>
-        {this.state.cities.map(city => (
-          <h1>{city.cityName}</h1>
-        ))}
-        {/* <CityList
-          cities={this.props.match.params} /> */}
+        <CityList cities = {this.state.cities} />
       </>
     )
   }

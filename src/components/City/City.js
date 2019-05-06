@@ -18,8 +18,8 @@ class City extends Component {
 
       return (
       <div className="col s9">
-        <h1>{city.cityName}</h1>
-        <h1>{city.country}</h1>
+        <h1>{city && city.cityName}</h1>
+        <h1>{city && city.country}</h1>
       </div>
       )
   }

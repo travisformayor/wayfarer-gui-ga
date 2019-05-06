@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import Posts from '../Posts/Posts';
 import Error from '../Modals/Error';
 import UserModel from "../../models/user";
@@ -13,6 +14,7 @@ class Profile extends Component {
     currentCity: '',
     signupDateDate: '',
     editMode: false,
+    errors: [],
   }
 
   onInputChange = (event) => {
@@ -44,12 +46,16 @@ class Profile extends Component {
 
   updatedUser = (updateUser) => {
     UserModel.update(updateUser)
+      .catch(error => {
+        this.setState({errors: [{message: 'Trouble updating info. Please try again.'}]});
+        console.log('Updating user error: ', error);
+      })
       .then(res => {
         console.log("Update response: ", res);
         // res.data has success set to true if it worked
         if (res.data.success) {
           // if success is true, redirect to profile
-          console.log('user updated succesfully')
+          console.log('user updated successfully')
           this.setState ({ editMode: false });
         } else if (res.data.errors) {
           // if fail (errors returned), get the errors
@@ -57,18 +63,18 @@ class Profile extends Component {
             errors: res.data.errors,
           })
         }
-      })
-      .catch(error => {
-        this.setState({error});
-        console.log('Error: ', error);
       });
   }
 
   getUser = () => {
     UserModel.getProfile()
+      .catch(error => {
+        this.setState({errors: [{message: 'Trouble getting user info. Are you logged in?'}]});
+        console.log('Fetch profile error: ', error);
+      })
       .then(res => {
-        console.log("Get user info response: ", res);
-        if (res.data.foundUser.username) {
+        console.log("User info response: ", res);
+        if (res.data.loggedIn) {
           this.setState({
             currentUsername: res.data.foundUser.username,
             currentEmail: res.data.foundUser.email,
@@ -76,43 +82,37 @@ class Profile extends Component {
             currentCity: res.data.foundUser.currentCity,
             signupDate: res.data.foundUser.signupDate,
           })
+        } else {
+          this.props.history.push('/'); // withRouter being used here
         }
         this.getUserPosts()
-      })
-      .catch(error => {
-        // this.setState({ error });
-        console.log("Error: ", error);
       });
   };
 
   getUserPosts = () => {
-    const posts = [
-      {
-        username: 'dave',
-        cityName: 'London',
-        content: 'This is a city',
-        date: Date.now(),
-        title: 'London Bridge',
-        _id: 1,
-      },
-      {
-        username: 'mary',
-        cityName: 'SF',
-        content: 'This is a foggy city',
-        date: Date.now(),
-        title: 'Golden Gate Bridge',
-        _id: 2,
-      }
-    ]
-    this.setState({
-      posts: posts,
-    })
+    PostModel.allByUsername(this.state.currentUsername)
+      .catch(error => {
+        this.setState({errors: [{message: 'Trouble retrieving your posts. Please try again.'}]})
+        console.log('Error getting user posts: ', error)
+      })
+      .then(fetchedPosts => {
+        this.setState({
+          posts: fetchedPosts.data.foundPosts,
+        });
+      });
   };
 
   render() {
+    let { errors } = this.state;
     return (
       <>
         <h4>Profile Page</h4>
+        {errors.map((error, index) => (
+          <Error
+            message={error.message}
+            key={index}
+          />
+        ))}
         <div className="row">
           <div className="col s12 m7">
             <div className="card blue-grey darken-1">
@@ -183,4 +183,4 @@ class Profile extends Component {
   }
 }
 
-export default Profile;
+export default withRouter(Profile);

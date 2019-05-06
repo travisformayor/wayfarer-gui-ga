@@ -21,7 +21,7 @@ class CityContainer extends Component {
   getCities = () => {
     CityModel.getCities()
     .then(res => {
-      console.log("Get cities info: ", res);
+      // console.log("Get cities info: ", res);
       if (res.data.allCities) {
         this.setState({
           cities: res.data.allCities
@@ -41,7 +41,7 @@ class CityContainer extends Component {
         console.log('Error getting posts: ', error)
       })
       .then(fetchedPosts => {
-        console.log('All posts: ', fetchedPosts);
+        // console.log('All posts: ', fetchedPosts);
         this.setState({
           posts: fetchedPosts.data.allPosts,
         });

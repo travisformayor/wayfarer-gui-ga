@@ -1,20 +1,30 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
+import logo from './logo.png';
 
 class Header extends Component {
   render() {
     return (
-      <header>
+      
         <nav>
-          <Link to={'/'}>Home</Link>
-          <Link to={'/san-francisco'}>Cities</Link>
-          <Link to={'/login'}>Login</Link>
-          <Link to={'/signup'}>Sign Up</Link>
-          <Link to={'/profile'}>Profile</Link>
-          <Link to={'/logout'}>Logout</Link>
+          <div className="nav-wrapper">
+            <a href="#" className="brand-logo left">
+              {/* <img src={logo} width="30px" height="auto" /> */}
+              Wayfarer
+            </a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><Link to={'/'}>Home</Link></li>
+            <li><Link to={'/san-francisco'}>Cities</Link></li>
+            <li><Link to={'/login'}>Login</Link></li>
+            <li><Link to={'/signup'}>Sign Up</Link></li>
+            <li><Link to={'/profile'}>Profile</Link></li>
+            <li><Link to={'/logout'}>Logout</Link></li>
+            </ul>
+          </div>
         </nav>
-      </header>
+        
+      
     )
   }
 }

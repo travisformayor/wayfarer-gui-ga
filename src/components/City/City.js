@@ -6,12 +6,12 @@ class City extends Component {
   render () {
 
     let { cities } = this.props;
-    let { cityURL } = this.props;
+    let { currentCity } = this.props;
 
     let city = ''
     if (cities.length > 0) {
       city = cities.find(city => {
-        return city.cityURL === cityURL;
+        return city.cityURL === currentCity;
       })
     }
     // console.log('found city ', city)

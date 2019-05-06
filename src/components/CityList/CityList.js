@@ -12,6 +12,7 @@ class CityList extends Component {
             key={city._id}
             cityName={city.cityName}
             cityURL={city.cityURL}
+            currentCity={this.props.currentCity}
           />
         ))
         }

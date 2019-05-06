@@ -36,10 +36,12 @@ class CityContainer extends Component {
     let { cityURL } = this.props.match.params
     return (
       <div className="row">
-        <CityList cities={this.state.cities} />
+        <CityList 
+          cities={this.state.cities} 
+          currentCity={cityURL}/>
         <City 
           cities={this.state.cities}
-          cityURL={cityURL} />
+          currentCity={cityURL} />
       </div>
     )
   }

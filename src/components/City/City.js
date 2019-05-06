@@ -10,12 +10,10 @@ class City extends Component {
 
   render () {
 
-    let cityStyle = {
-      width: '90%',
-      height: '90%',
-
-
+    const imagePadding = {
+      padding: '75',
     }
+    
 
     let { cities, allPosts, currentCity } = this.props;
 
@@ -38,19 +36,19 @@ class City extends Component {
     let image;
     switch (currentCity) {
       case 'san-francisco':
-        image = <img className="responsive-img" src={SF} alt="San Francisco" width="100%" height="100%"/>;
+        image = <img src={SF} alt="San Francisco" width="650px" height="400px"/>;
         break;
       case 'seattle':
         image = <img src={Seattle} alt="Seattle" width="650px" height="400px"/>;
         break;
       case 'london':
-        image = <img className="responsive-img" src={London} alt="London" />;
+        image = <img  src={London} alt="London" width="650px" height="400px"/>;
         break;
       case 'sydney':
-        image = <img className="responsive-img" src={Sydney} alt="Sydney" />;
+        image = <img src={Sydney} alt="Sydney" width="650px" height="400px"/>;
         break;
       default:
-        image = <img className="responsive-img"  alt="Error Loading Image" />;
+        image = <img alt="error Loading Image" width="650px" height="400px"/>;
     }
 
       return (
@@ -61,7 +59,7 @@ class City extends Component {
         <h4>{city && city.country}</h4>
         </div>
         </div>
-        <div className="city-img s4 center" >
+        <div className="city-img s4 center" style={imagePadding}>
           {image}
         </div>
 
@@ -70,7 +68,7 @@ class City extends Component {
           loggedIn={this.props.loggedIn}
           currentUsername={this.props.currentUsername} />
 
-        <div className="posts-holder center">
+        <div className="posts-holder">
           <Posts posts={cityPosts} />
         
         </div>

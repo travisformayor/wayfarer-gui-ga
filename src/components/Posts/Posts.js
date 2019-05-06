@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import Post from '../Post/Post';
+import './Posts.css';
 
 class Posts extends Component {
   render() {
     // console.log(this.props.posts);
 
     let {posts} = this.props;
+    let reversedPosts = posts.reverse();
     console.log('Posts output: ', posts);
 
     return (
-      <>
-        {posts.map(post => (
+      <div className="posts-holder">
+        {reversedPosts.map(post => (
           <Post
             key={post._id}
             id={post._id}
@@ -20,7 +22,7 @@ class Posts extends Component {
             content={post.content}
           />
         ))}
-      </>
+      </div>
     )
   }
 }

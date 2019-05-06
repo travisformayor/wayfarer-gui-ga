@@ -11,6 +11,7 @@ class CreatePost extends Component {
       title: '',
       content: '',
       errors: [],
+      modalOpen: false,
     }
   }
 
@@ -41,12 +42,15 @@ class CreatePost extends Component {
   createPost = (post) => {
     PostModel.createPost(post)
       .then((res) => {
-        console.log("New post: ", res);
         if (res.data.errors) {
           this.setState({
             errors: res.data.errors,
           })
         }
+        
+        this.props.getAllPosts();
+        this.setState({modalOpen: false});
+        console.log("New post: ", res);
       })
       .catch(error => {
         this.setState({ errors: [{ message: 'Trouble accessing the DB. Please try again' }] });
@@ -54,12 +58,34 @@ class CreatePost extends Component {
       });
   }
 
+  onClose = () => {
+    console.log('closed');
+    this.setState({
+      title: '',
+      content: '',
+      modalOpen: false,
+    })
+  }
+
+  onOpen = () => {
+    console.log('opened');
+    this.setState({
+      modalOpen: true,
+    })
+  }
+  
+
   render() {
     let { loggedIn, currentUsername, city } = this.props;
     let { cityURL, title, content, errors } = this.state;
     return (
       <><div className="valign"><div className="center-align">
-        <Modal header="Create Post" trigger={<Button className="center-align">Add Post</Button>}>
+       <Modal 
+          open={this.state.modalOpen}  
+          header="Create Post" 
+          trigger={<Button className="center-align">Add Post</Button>}
+          options={{onCloseStart: this.onClose, onOpenStart: this.onOpen}}>
+
           {(loggedIn) ? (
             <div className="row">
               <form className="col s12" onSubmit={this.onFormSubmit}>

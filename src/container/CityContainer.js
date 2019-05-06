@@ -82,7 +82,8 @@ class CityContainer extends Component {
           currentCity={cityURL} 
           allPosts={this.state.posts}
           loggedIn={this.state.loggedIn}
-          currentUsername={this.state.currentUsername} />
+          currentUsername={this.state.currentUsername}
+          getAllPosts={this.getAllPosts} />
       </div>
     )
   }

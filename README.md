@@ -2,13 +2,11 @@
 
 Project Wayfarer is a travel community built for users to share tips / posts about their favorite locations around the world.
 
-**API Documentation**
-
-![Project Wire Frames] (src/img/wireframes.png)
-
-![Development process on Trello] (https://trello.com/b/oYdvZqV3/wayfarer-trello)
-
 ![Live Version] (https://wayfare-front-345.herokuapp.com/)
+
+**Planning**
+
+![Development process on Trello](https://trello.com/b/oYdvZqV3/wayfarer-trello)
 
 **Technologies Used**
 

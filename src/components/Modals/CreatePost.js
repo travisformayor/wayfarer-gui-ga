@@ -5,7 +5,7 @@ import PostModel from '../../models/userPost';
 class CreatePost extends Component {
   constructor() {
     super()
-    state = {
+    this.state = {
       cityURL: '',
       title: '',
       content: '',
@@ -14,10 +14,11 @@ class CreatePost extends Component {
   }
 
   onInputChange = (event) => {
-    const { cityURL, title, content } = event.target;
     this.setState({
-      [name]: value,
-    });
+      cityURL: event.target.value,
+      title: event.target.value,
+      content: event.target.value,
+    })
   }
 
   onFormSubmit = (event) => {
@@ -31,15 +32,15 @@ class CreatePost extends Component {
   }
 
   createPost = (post) => {
-    PostModel.create(post)
+    PostModel.createPost(post)
       .then((res) => {
         console.log("New post: ", res);
-      })
         if (res.data.errors) {
           this.setState({
             errors: res.data.errors,
           })
         }
+      })
       .catch(error => {
         this.setState({ errors: [{ message: 'Trouble accessing the DB. Please try again' }] });
         console.log('Error: ', error);
@@ -47,9 +48,8 @@ class CreatePost extends Component {
   }
 
   render() {
-
     let { loggedIn, currentUsername, city } = this.props;
-    let { cityURL, title, content } = this.state;
+    let { cityURL, title, content, errors } = this.state;
     return (
       <>
         <Modal header="Create Post" trigger={<Button>Add Post</Button>}>

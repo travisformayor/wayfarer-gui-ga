@@ -22,8 +22,8 @@ class PostModel {
   }
 
   static createPost(userPost) {
-    const api_url = `${userPostEndpoint}/createPost`;
-    let request = axios.post(api_url);
+    const api_url = `${userPostEndpoint}`;
+    let request = axios.post(api_url, userPost);
     return request;
   }
 

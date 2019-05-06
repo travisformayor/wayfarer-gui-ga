@@ -6,14 +6,14 @@ import logo from './logo.png';
 class Header extends Component {
   render() {
     return (
-      
+
         <nav>
           <div className="nav-wrapper">
             <a href="#" className="brand-logo left">
               {/* <img src={logo} width="30px" height="auto" /> */}
               Wayfarer
             </a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <ul id="nav-mobile" className="right hide-on-med-and-down">
             <li><Link to={'/'}>Home</Link></li>
             <li><Link to={'/san-francisco'}>Cities</Link></li>
             <li><Link to={'/login'}>Login</Link></li>
@@ -23,8 +23,8 @@ class Header extends Component {
             </ul>
           </div>
         </nav>
-        
-      
+
+
     )
   }
 }

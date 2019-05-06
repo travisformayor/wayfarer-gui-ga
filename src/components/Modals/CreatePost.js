@@ -28,23 +28,37 @@ class CreatePost extends Component {
   // }
 
   render() {
+
+    let { loggedIn, currentUsername, city } = this.props;
     return (
       <>
-        <Modal header="Modal Header" trigger={<Button>Add Post</Button>}>
-          <div className="row">
-            <form className="col s12">
-              <div className="row">
-                <div className="input-field col s12">
-                  <input id="title" type="text" />
-                  <label htmlFor="title">Title</label>
+        <Modal header="Create Post" trigger={<Button>Add Post</Button>}>
+          {(loggedIn) ? (
+            <div className="row">
+              <form className="col s12">
+                <div className="row">
+                  <div className="input-field col s12">
+                    <input id="title" type="text" />
+                    <label htmlFor="title">Title</label>
+                  </div>
+                  <div className="input-field col s12">
+                    <input disabled id="username" type="text" value={currentUsername} />
+                    <label className="active" htmlFor="username">Username</label>
+                  </div>
+                  <div className="input-field col s12">
+                    <input disabled id="city" type="text" value={city}  />
+                    <label className="active" htmlFor="city">City ID</label>
+                  </div>
+                  <div className="input-field col s12">
+                    <textarea id="textarea1" className="materialize-textarea"></textarea>
+                    <label htmlFor="textarea1">Textarea</label>
+                  </div>
                 </div>
-                <div className="input-field col s12">
-                  <textarea id="textarea1" class="materialize-textarea"></textarea>
-                  <label htmlFor="textarea1">Textarea</label>
-                </div>
-              </div>
-            </form>
-          </div>
+              </form>
+            </div>
+          ) : (
+            <h2>You are not logged in</h2>
+          )}
         </Modal>
       </>
     )

@@ -38,6 +38,18 @@ class PostModel {
   //   let request = axios.put(api_url);
   //   return request;
   // }
+
+  static oneById(id) {
+    const api_url = `${userPostEndpoint}/${id}`;
+    let request = axios.get(api_url);
+    return request;
+  }
+
+  static allByUsername(username) {
+    const api_url = `${userPostEndpoint}/user/${username}`;
+    let request = axios.get(api_url);
+    return request;
+  }
 }
 
 

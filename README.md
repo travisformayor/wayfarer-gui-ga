@@ -43,6 +43,7 @@ Users has the ability to
 - Profile inaccessable when logged out
 - Backend validation
 - New Post fills username and city and disabled input
+- You can't post if you are not logged in
 
 **The Gauntlet**
 - The one task and kept coming back over and over again

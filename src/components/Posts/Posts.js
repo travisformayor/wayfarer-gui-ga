@@ -7,12 +7,11 @@ class Posts extends Component {
     // console.log(this.props.posts);
 
     let {posts} = this.props;
-    let reversedPosts = posts.reverse();
     console.log('Posts output: ', posts);
 
     return (
       <div className="posts-holder">
-        {reversedPosts.map(post => (
+        {posts.map(post => (
           <Post
             key={post._id}
             id={post._id}

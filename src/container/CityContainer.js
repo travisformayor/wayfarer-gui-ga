@@ -47,7 +47,7 @@ class CityContainer extends Component {
       .then(fetchedPosts => {
         // console.log('All posts: ', fetchedPosts);
         this.setState({
-          posts: fetchedPosts.data.allPosts,
+          posts: fetchedPosts.data.allPosts.reverse(),
         });
       });
   };

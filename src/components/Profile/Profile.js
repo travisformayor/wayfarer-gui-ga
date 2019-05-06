@@ -98,7 +98,7 @@ class Profile extends Component {
       })
       .then(fetchedPosts => {
         this.setState({
-          posts: fetchedPosts.data.foundPosts,
+          posts: fetchedPosts.data.foundPosts.reverse(),
         });
       });
   };

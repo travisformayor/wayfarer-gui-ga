@@ -45,4 +45,5 @@ Users has the ability to
 
 **The Gauntlet**
 - The one task and kept coming back over and over again
+
 ![Master this](src/img/gauntlet.jpg)

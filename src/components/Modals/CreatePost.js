@@ -18,6 +18,11 @@ class CreatePost extends Component {
     this.setState({
       cityURL: event.target.value,
       title: event.target.value,
+    })
+  }
+
+  onHandleChange = (event) => {
+    this.setState({
       content: event.target.value,
     })
   }
@@ -72,7 +77,7 @@ class CreatePost extends Component {
                     <label className="active" htmlFor="city">City ID</label>
                   </div>
                   <div className="input-field col s12">
-                    <textarea id="content" className="materialize-textarea" onChange={this.onInputChange} value={content}></textarea>
+                    <textarea id="content" className="materialize-textarea" onChange={this.onHandleChange} value={content}></textarea>
                     <label htmlFor="content">Textarea</label>
                   </div>
                   <div className="input-field col s12">

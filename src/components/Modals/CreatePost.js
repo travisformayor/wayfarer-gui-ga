@@ -5,7 +5,7 @@ class CreatePost extends Component {
   constructor() {
     super()
     this.state = {
-      cityName: '',
+      cityURL: '',
       title: '',
       content: '',
     }
@@ -13,6 +13,7 @@ class CreatePost extends Component {
 
   onInputChange = (event) => {
     this.setState({
+      cityURL: event.target.value,
       title: event.target.value,
       content: event.target.value,
     });

@@ -43,7 +43,7 @@ class City extends Component {
         image = <img className="responsive-img" src={Sydney} alt="Sydney" />;
         break;
       default:
-        image = <img className="responsive-img"  alt="Error Loading Image" />;
+        image = <img className="responsive-img"  alt="Error Loading" />;
     }
 
       return (

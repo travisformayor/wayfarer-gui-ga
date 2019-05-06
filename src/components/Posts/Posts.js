@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PostModel from '../../models/userPost';
 import Post from '../Post/Post';
 
 class Posts extends Component {

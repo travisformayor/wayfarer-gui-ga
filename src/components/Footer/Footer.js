@@ -4,15 +4,13 @@ import './Footer.css';
 class Footer extends Component {
   render() {
     return (
-      <div class="page-footer footer-copyright">
-            <div class="container center">
-            <div>
-            © 2019 Copyright ||    
-            Wayfarer - Learn Cities
-            </div>
-            </div>
-            </div>
-        
+      <div className="page-footer footer-copyright">
+        <div className="container center">
+          <div>
+            &cop; 2019 Copyright || Wayfarer - Learn Cities
+          </div>
+        </div>
+      </div>
     )
   }
 }

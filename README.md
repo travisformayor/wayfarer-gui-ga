@@ -34,6 +34,7 @@ Users has the ability to
 **Nice Things**
 
 - Pair Programming && Switching tasks
+- Our Trello
 - Cookies 🍪
 - Modals for days
 - Detects if its on Heroku and swaps the api url

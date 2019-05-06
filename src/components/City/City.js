@@ -48,7 +48,7 @@ class City extends Component {
         image = <img src={Sydney} alt="Sydney" width="650px" height="400px"/>;
         break;
       default:
-        image = <img alt="error Loading Image" width="650px" height="400px"/>;
+        image = <img alt="Error Loading" width="650px" height="400px"/>;
     }
 
       return (

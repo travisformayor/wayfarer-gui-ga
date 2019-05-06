@@ -4,7 +4,6 @@ import Login from '../Modals/Login';
 import SignUp from '../Modals/Signup';
 import Logout from '../Modals/Logout';
 import './Header.css';
-import logo from './logo.png';
 
 class Header extends Component {
   state = {
@@ -24,25 +23,20 @@ class Header extends Component {
         <nav>
           <div className="nav-wrapper">
             <a href="#" className="brand-logo left">
-              {/* <img src={logo} width="30px" height="auto" /> */}
               Wayfarer
             </a>
-            
-            <ul id="nav-moile" className="right">
-            <li><Link to={'/'}>Home</Link></li>
-            <li><Link to={'/san-francisco'}>Cities</Link></li>
-            <li><Login controlStatus={this.isLoggedIn} /></li>
-            <li><SignUp /></li>
-            <li><Link to={'/profile'}>Profile</Link></li>
-            <li><Logout controlStatus={this.isLoggedIn} 
-                  loginStatus={this.state.loggedIn} /></li>
+            <ul id="nav" className="right">
+              <li><Link to={'/'}>Home</Link></li>
+              <li><Link to={'/san-francisco'}>Cities</Link></li>
+              <li><Login controlStatus={this.isLoggedIn} /></li>
+              <li><SignUp /></li>
+              <li><Link to={'/profile'}>Profile</Link></li>
+              <li><Logout controlStatus={this.isLoggedIn} 
+                    loginStatus={this.state.loggedIn} /></li>
             </ul>
           </div>
         </nav>
-        </div>
-
-        
-      
+      </div>
     )
   }
 }

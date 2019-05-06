@@ -3,9 +3,6 @@ import logo from './home-goldengate.png';
 
 class Home extends Component {
   render() {
-    let height = {
-      height: 400
-    }
     return (
       // <h1>
       //   Wayfarer Landing Page
@@ -13,7 +10,7 @@ class Home extends Component {
       <div className="row">
       <div className="col s12 m12" >
         <div className="center">
-        <img src={logo}/>
+        <img src={logo} alt="logo"/>
         <div className="row">
 
       <div className="col s4">

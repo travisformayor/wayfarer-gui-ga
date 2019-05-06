@@ -3,7 +3,7 @@ axios.defaults.withCredentials = true; // Gets session cookie from responses
 
 let userPostEndpoint = 'http://localhost:4000/api/v1/posts'; // localhost
 
-// note: the following doesn't work unless you use the heroku buildpack. 
+// note: the following doesn't work unless you use the heroku buildpack.
 // ex: heroku create app-name --buildpack mars/create-react-app
 // https://github.com/mars/create-react-app-buildpack
 if(process.env.NODE_ENV === 'production') { // we are on heroku!
@@ -21,11 +21,11 @@ class PostModel {
     return request;
   }
 
-  // static createPost(userPost) {
-  //   const api_url = `${userPostEndpoint}/createPost`;
-  //   let request = axios.post(api_url);
-  //   return request;
-  // }
+  static createPost(userPost) {
+    const api_url = `${userPostEndpoint}`;
+    let request = axios.post(api_url, userPost);
+    return request;
+  }
 
   // static deletePost(userPost) {
   //   const api_url = `${userPostEndpoint}/deletePost`;

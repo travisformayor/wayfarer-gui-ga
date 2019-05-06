@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import PostModel from '../../models/userPost';
 import Post from '../Post/Post';
+import './Posts.css';
 
 class Posts extends Component {
   render() {
@@ -10,7 +10,7 @@ class Posts extends Component {
     console.log('Posts output: ', posts);
 
     return (
-      <>
+      <div className="posts-holder">
         {posts.map(post => (
           <Post
             key={post._id}
@@ -21,7 +21,7 @@ class Posts extends Component {
             content={post.content}
           />
         ))}
-      </>
+      </div>
     )
   }
 }

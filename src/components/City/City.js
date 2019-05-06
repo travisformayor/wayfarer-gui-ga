@@ -10,6 +10,11 @@ class City extends Component {
 
   render () {
 
+    const imagePadding = {
+      padding: '75',
+    }
+    
+
     let { cities, allPosts, currentCity } = this.props;
 
     let city = ''
@@ -31,39 +36,42 @@ class City extends Component {
     let image;
     switch (currentCity) {
       case 'san-francisco':
-        image = <img className="responsive-img" src={SF} alt="San Francisco" />;
+        image = <img src={SF} alt="San Francisco" width="650px" height="400px"/>;
         break;
       case 'seattle':
-        image = <img className="responsive-img" src={Seattle} alt="Seattle" />;
+        image = <img src={Seattle} alt="Seattle" width="650px" height="400px"/>;
         break;
       case 'london':
-        image = <img className="responsive-img" src={London} alt="London" />;
+        image = <img  src={London} alt="London" width="650px" height="400px"/>;
         break;
       case 'sydney':
-        image = <img className="responsive-img" src={Sydney} alt="Sydney" />;
+        image = <img src={Sydney} alt="Sydney" width="650px" height="400px"/>;
         break;
       default:
-        image = <img className="responsive-img"  alt="Error Loading Image" />;
+        image = <img alt="Error Loading" width="650px" height="400px"/>;
     }
 
       return (
       <div className="col s9">
         <div className="city-header">
-        <h1>{city && city.cityName}</h1>
-        <h1>{city && city.country}</h1>
+        <div className="center">
+        <h3>{city && city.cityName}</h3>
+        <h4>{city && city.country}</h4>
         </div>
-        <div className="city-img">
+        </div>
+        <div className="city-img s4 center" style={imagePadding}>
           {image}
         </div>
 
-        <CreatePost 
-          city={city.cityURL} 
+        <CreatePost
+          city={city.cityURL}
           loggedIn={this.props.loggedIn}
-          currentUsername={this.props.currentUsername} />
+          currentUsername={this.props.currentUsername}
+          getAllPosts={this.props.getAllPosts} />
 
-        <div className="posts-holder">
+        <div className="posts-holder col s12">
           <Posts posts={cityPosts} />
-        
+
         </div>
       </div>
       )

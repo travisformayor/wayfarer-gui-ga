@@ -105,7 +105,7 @@ class Login extends Component {
             <input
               onChange={this.onInputChange}
               type="text"
-              id="username"
+              id="login-username"
               name="username"
               value={this.state.username}
             />
@@ -115,7 +115,7 @@ class Login extends Component {
             <input
               onChange={this.onInputChange}
               type="password"
-              id="password"
+              id="login-password"
               name="password"
               value={this.state.password}
             />

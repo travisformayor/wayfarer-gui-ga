@@ -7,11 +7,12 @@ class Footer extends Component {
       <div className="page-footer footer-copyright">
         <div className="container center">
           <div>
-            &cop; 2019 Copyright || Wayfarer - Learn Cities
-          </div>
-        </div>
-      </div>
-    )
+            &copy; 2019 Copyright ||    
+            Wayfarer - Learn Cities
+           </div>
+         </div>
+       </div>
+    ) 
   }
 }
 

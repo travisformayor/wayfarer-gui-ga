@@ -19,22 +19,24 @@ class Header extends Component {
   render() {
     
     return (
-      <nav>
-        <div className="nav-wrapper">
-          <a href="#" className="brand-logo left">
-            Wayfarer
-          </a>
-          <ul id="nav-mobile" className="right hide-on-med-and-down">
-            <li><Link to={'/'}>Home</Link></li>
-            <li><Link to={'/san-francisco'}>Cities</Link></li>
-            <li><Login controlStatus={this.isLoggedIn} /></li>
-            <li><SignUp /></li>
-            <li><Link to={'/profile'}>Profile</Link></li>
-            <li><Logout controlStatus={this.isLoggedIn} 
-                  loginStatus={this.state.loggedIn} /></li>
-          </ul>
-        </div>
-      </nav>
+      <div>
+        <nav>
+          <div className="nav-wrapper">
+            <a href="#" className="brand-logo left">
+              Wayfarer
+            </a>
+            <ul id="nav" className="right">
+              <li><Link to={'/'}>Home</Link></li>
+              <li><Link to={'/san-francisco'}>Cities</Link></li>
+              <li><Login controlStatus={this.isLoggedIn} /></li>
+              <li><SignUp /></li>
+              <li><Link to={'/profile'}>Profile</Link></li>
+              <li><Logout controlStatus={this.isLoggedIn} 
+                    loginStatus={this.state.loggedIn} /></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
     )
   }
 }

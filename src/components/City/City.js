@@ -31,19 +31,19 @@ class City extends Component {
     let image;
     switch (currentCity) {
       case 'san-francisco':
-        image = <img class="responsive-img" src={SF} alt="San Francisco" />;
+        image = <img className="responsive-img" src={SF} alt="San Francisco" />;
         break;
       case 'seattle':
-        image = <img class="responsive-img" src={Seattle} alt="Seattle" />;
+        image = <img className="responsive-img" src={Seattle} alt="Seattle" />;
         break;
       case 'london':
-        image = <img class="responsive-img" src={London} alt="London" />;
+        image = <img className="responsive-img" src={London} alt="London" />;
         break;
       case 'sydney':
-        image = <img class="responsive-img" src={Sydney} alt="Sydney" />;
+        image = <img className="responsive-img" src={Sydney} alt="Sydney" />;
         break;
       default:
-        image = <img class="responsive-img"  alt="Error Loading Image" />;
+        image = <img className="responsive-img"  alt="Error Loading Image" />;
     }
 
       return (
@@ -58,10 +58,8 @@ class City extends Component {
 
         <CreatePost 
           city={city.cityURL} 
-          // We also need to pass the logged in username 
-          // So i guess CityContainer needs to do a profile api all also
-          // ... since only /profile can get there username out of the session cookie
-          />
+          loggedIn={this.props.loggedIn}
+          currentUsername={this.props.currentUsername} />
 
         <div className="posts-holder">
           <Posts posts={cityPosts} />

@@ -6,16 +6,17 @@ class CityList extends Component {
     let { cities } = this.props;
 
     return (
-      <>
+      <div className="col s3">
         {cities.map(city => (
           <CityListItem
             key={city._id}
             cityName={city.cityName}
             cityURL={city.cityURL}
+            currentCity={this.props.currentCity}
           />
         ))
         }
-      </>
+      </div>
     )
   }
 }

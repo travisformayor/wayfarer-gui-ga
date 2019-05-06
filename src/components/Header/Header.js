@@ -8,7 +8,7 @@ class Header extends Component {
       <header>
         <nav>
           <Link to={'/'}>Home</Link>
-          <Link to={'/cities'}>Cities</Link>
+          <Link to={'/san-francisco'}>Cities</Link>
           <Link to={'/login'}>Login</Link>
           <Link to={'/signup'}>Sign Up</Link>
           <Link to={'/profile'}>Profile</Link>

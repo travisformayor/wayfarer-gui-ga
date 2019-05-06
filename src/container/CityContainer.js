@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import CityList from '../components/CityList/CityList';
 import City from '../components/City/City';
 import CityModel from '../models/city';
+import './cities.css';
 
 class CityContainer extends Component {
 	state = {
@@ -34,12 +35,14 @@ class CityContainer extends Component {
     console.log('cities state', this.state.cities.length)
     let { cityURL } = this.props.match.params
     return (
-      <>
+      <div className="row">
+        <CityList 
+          cities={this.state.cities} 
+          currentCity={cityURL}/>
         <City 
           cities={this.state.cities}
-          cityURL={cityURL} />
-        <CityList cities={this.state.cities} />
-      </>
+          currentCity={cityURL} />
+      </div>
     )
   }
 }

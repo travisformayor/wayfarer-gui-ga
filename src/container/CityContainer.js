@@ -23,7 +23,6 @@ class CityContainer extends Component {
           cities: res.data.allCities
         })
       }
-      console.log("Get cities info fropm this.state: ", this.state);
     })
     .catch(error => {
       // this.setState({ error });
@@ -32,9 +31,14 @@ class CityContainer extends Component {
   }
 
   render(){
+    console.log('cities state', this.state.cities.length)
+    let { cityURL } = this.props.match.params
     return (
       <>
-        <CityList cities = {this.state.cities} />
+        <City 
+          cities={this.state.cities}
+          cityURL={cityURL} />
+        <CityList cities={this.state.cities} />
       </>
     )
   }

@@ -12,6 +12,7 @@ class CreatePost extends Component {
 
   onInputChange = (event) => {
     this.setState({
+      cityName: event.target.value,
       title: event.target.value,
       content: event.target.value,
     });
@@ -46,9 +47,6 @@ class CreatePost extends Component {
       </>
     )
   }
-
-
-
 }
 
 export default CreatePost;

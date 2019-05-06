@@ -1,10 +1,24 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Login from '../Modals/Login';
+import SignUp from '../Modals/Signup';
+import Logout from '../Modals/Logout';
 import './Header.css';
 import logo from './logo.png';
 
 class Header extends Component {
+  state = {
+    loggedIn: false,
+  }
+
+  isLoggedIn = (boolean) => {
+    this.setState({
+      loggedIn: boolean,
+    })
+  }
+
   render() {
+
     return (
       
         <nav>
@@ -16,10 +30,11 @@ class Header extends Component {
             <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><Link to={'/'}>Home</Link></li>
             <li><Link to={'/san-francisco'}>Cities</Link></li>
-            <li><Link to={'/login'}>Login</Link></li>
-            <li><Link to={'/signup'}>Sign Up</Link></li>
+            <li><Login controlStatus={this.isLoggedIn} /></li>
+            <li><SignUp /></li>
             <li><Link to={'/profile'}>Profile</Link></li>
-            <li><Link to={'/logout'}>Logout</Link></li>
+            <li><Logout controlStatus={this.isLoggedIn} 
+                  loginStatus={this.state.loggedIn} /></li>
             </ul>
           </div>
         </nav>

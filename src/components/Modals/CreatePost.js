@@ -9,6 +9,7 @@ class CreatePost extends Component {
       cityURL: '',
       title: '',
       content: '',
+      errors: [],
     }
   }
 
@@ -30,16 +31,19 @@ class CreatePost extends Component {
   }
 
   createPost = (post) => {
-    let newPost = {
-      body: post,
-    }
-
-    PostModel.create(newPost)
+    PostModel.create(post)
       .then((res) => {
-        let posts = this.state.posts
-        let newPosts = posts.push(res.data)
-        this.setState({ newPosts })
+        console.log("New post: ", res);
       })
+        if (res.data.errors) {
+          this.setState({
+            errors: res.data.errors,
+          })
+        }
+      .catch(error => {
+        this.setState({ errors: [{ message: 'Trouble accessing the DB. Please try again' }] });
+        console.log('Error: ', error);
+      });
   }
 
   render() {

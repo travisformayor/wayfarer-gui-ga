@@ -19,18 +19,19 @@ class CreatePost extends Component {
     });
   }
 
-  // onFormSubmit = (event) => {
-  //   event.preventDefault()
-  //   let post = this.state.post
-  //   this.props.createPost(post)
-  //   this.setState({
-
-  //   })
-  // }
+  onFormSubmit = (event) => {
+    event.preventDefault()
+    let post = this.state.post
+    this.props.createPost(post)
+    this.setState({
+      post: '',
+    })
+  }
 
   render() {
 
     let { loggedIn, currentUsername, city } = this.props;
+    let { cityURL, title, content } = this.state;
     return (
       <>
         <Modal header="Create Post" trigger={<Button>Add Post</Button>}>
@@ -39,7 +40,7 @@ class CreatePost extends Component {
               <form className="col s12">
                 <div className="row">
                   <div className="input-field col s12">
-                    <input id="title" type="text" />
+                    <input id="title" type="text" onChange={this.onFormSubmit} value={title} />
                     <label htmlFor="title">Title</label>
                   </div>
                   <div className="input-field col s12">
@@ -47,12 +48,15 @@ class CreatePost extends Component {
                     <label className="active" htmlFor="username">Username</label>
                   </div>
                   <div className="input-field col s12">
-                    <input disabled id="city" type="text" value={city}  />
+                    <input disabled id="city" type="text" value={city} />
                     <label className="active" htmlFor="city">City ID</label>
                   </div>
                   <div className="input-field col s12">
-                    <textarea id="textarea1" className="materialize-textarea"></textarea>
+                    <textarea id="textarea1" className="materialize-textarea" onChange={this.onFormSubmit} value={content} ></textarea>
                     <label htmlFor="textarea1">Textarea</label>
+                  </div>
+                  <div className="">
+                    <button type="submit" className="btn waves-effect waves-light">Post</button>
                   </div>
                 </div>
               </form>
